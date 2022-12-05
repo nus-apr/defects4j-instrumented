@@ -2,7 +2,8 @@
 
 currenly only a draft for Lang-19
 
-new tag `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
+* Bug Report: https://issues.apache.org/jira/browse/LANG-710
+* new tag `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
 
 ```java
 public static final String unescapeHtml4(String input) {
