@@ -1,6 +1,6 @@
 # defects4j-instrumented
 
-currenly only a draft for Lang-19
+### Currenly only a draft for Lang-19
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-710
 * new tag `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
@@ -25,3 +25,7 @@ public static final String unescapeHtml4(String input) {
 }
 ```
 
+### There are (at least) two issues:
+
+* test cases do not call the method mentioned in the bug report, they call the underlying buggy method
+* catching exception and throwing … changes the exception because I cannot re-throw but need to wrap into RuntimeException
