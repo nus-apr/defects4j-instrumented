@@ -20,7 +20,7 @@ The zipped git archives are included in [instrumented-archives](./instrumented-a
 ```diff
 yannic@yannics-mbp lang_19 % git diff D4J_Lang_19_BUGGY_VERSION D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED
 diff --git a/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java b/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java
-index d84aae58..6d6e3d79 100644
+index d84aae58..2a0d1f3d 100644
 --- a/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java
 +++ b/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java
 @@ -465,7 +465,17 @@ public class StringEscapeUtils {
@@ -33,7 +33,7 @@ index d84aae58..6d6e3d79 100644
 +            return UNESCAPE_HTML4.translate(input);
 +            // Original Code END
 +        } catch (StringIndexOutOfBoundsException e) {
-+            if (input.contains("&#03")) {
++            if (input.contains("&")) {
 +                throw new RuntimeException("Execution violates behavior specified in the bug report.");
 +            } else {
 +                throw e;
@@ -59,7 +59,7 @@ public static final String unescapeHtml4(String input) {
         return UNESCAPE_HTML4.translate(input);
         // Original Code END
     } catch (StringIndexOutOfBoundsException e) {
-        if (input.contains("&#03")) {
+        if (input.contains("&")) {
             throw new RuntimeException("Execution violates behavior specified in the bug report.");
         } else {
             throw e;
