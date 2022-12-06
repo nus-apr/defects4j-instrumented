@@ -153,3 +153,35 @@ index 882358f2..4b40ded4 100644
 ```
 
 </details>
+
+<details>
+<summary><b>Lang-20</b></summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-703
+* new tag: `D4J_Lang_20_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/lang3/StringUtils.java b/src/main/java/org/apache/commons/lang3/StringUtils.java
+index 3c2cf3f2..512110b9 100644
+--- a/src/main/java/org/apache/commons/lang3/StringUtils.java
++++ b/src/main/java/org/apache/commons/lang3/StringUtils.java
+@@ -3227,6 +3227,14 @@ public class StringUtils {
+      * @since 3.0 Changed signature to use varargs
+      */
+     public static <T> String join(T... elements) {
++       try {
++               return join_original(elements);
++       } catch (NullPointerException e) {
++               throw new RuntimeException("Execution violates behavior specified in the bug report.");
++       }
++    }
++
++    public static <T> String join_original(T... elements) {
+         return join(elements, null);
+     }
+```
+
+</details>
+
+
+
