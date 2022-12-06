@@ -17,20 +17,29 @@ The zipped git archives are included in [instrumented-archives](./instrumented-a
 * Bug Report: https://issues.apache.org/jira/browse/LANG-710
 * new tag: `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
 
-```java
-public static final String unescapeHtml4(String input) {
-    try {
-        // Original Code START
-        return UNESCAPE_HTML4.translate(input);
-        // Original Code END
-    } catch (StringIndexOutOfBoundsException e) {
-        if (input.contains("&#03")) {
-            throw new RuntimeException("Execution violates behavior specified in the bug report.");
-        } else {
-            throw e;
-        }
-    }
-}
+```diff
+yannic@yannics-mbp lang_19 % git diff D4J_Lang_19_BUGGY_VERSION D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED
+diff --git a/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java b/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java
+index d84aae58..6d6e3d79 100644
+--- a/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java
++++ b/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java
+@@ -465,7 +465,17 @@ public class StringEscapeUtils {
+      * @since 3.0
+      */
+     public static final String unescapeHtml4(String input) {
+-        return UNESCAPE_HTML4.translate(input);
++        try {
++            // Original Code START
++            return UNESCAPE_HTML4.translate(input);
++            // Original Code END
++        } catch (StringIndexOutOfBoundsException e) {
++            if (input.contains("&#03")) {
++                throw new RuntimeException("Execution violates behavior specified in the bug report.");
++            } else {
++                throw e;
++            }
++        }
+     }
 ```
 
 ## Progress
