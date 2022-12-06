@@ -52,7 +52,7 @@ index d84aae58..2a0d1f3d 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 4** subjects, for which ARJA can generate a plausible patch.
+The following list includes the already covered subjects. **Total count: 5** subjects, for which ARJA can generate a plausible patch.
 
 <details>
 <summary><b>Lang-19 (Example; cannot be fixed by ARJA)</b></summary>
@@ -218,6 +218,59 @@ index b36a156a..c7020af7 100644
          // From Commons Math:
          //if either operand is abs 1, return 1:
          if (Math.abs(u) <= 1 || Math.abs(v) <= 1) {
+```
+
+</details>
+
+<details>
+<summary><b>Lang-35</b></summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-571
+* new tag: `D4J_Lang_35_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/lang3/ArrayUtils.java b/src/main/java/org/apache/commons/lang3/ArrayUtils.java
+index ac22f8fd..cbdb0239 100644
+--- a/src/main/java/org/apache/commons/lang3/ArrayUtils.java
++++ b/src/main/java/org/apache/commons/lang3/ArrayUtils.java
+@@ -3286,6 +3286,18 @@ public class ArrayUtils {
+      * @throws IllegalArgumentException if both arguments are null
+      */
+     public static <T> T[] add(T[] array, T element) {
++       try {
++               return add_original(array, element);
++       } catch (ClassCastException e) {
++               if (array == null && element == null) {
++                       throw new RuntimeException("Execution violates behavior specified in the bug report.");
++               } else {
++                       throw e;
++               }
++       }
++    }
++
++    public static <T> T[] add_original(T[] array, T element) {
+         Class<?> type;
+         if (array != null){
+             type = array.getClass();
+@@ -3565,6 +3577,18 @@ public class ArrayUtils {
+      * @throws IllegalArgumentException if both array and element are null
+      */
+     public static <T> T[] add(T[] array, int index, T element) {
++       try {
++               return add_original(array, index, element);
++       } catch (ClassCastException e) {
++               if (array == null && element == null) {
++                       throw new RuntimeException("Execution violates behavior specified in the bug report.");
++               } else {
++                       throw e;
++               }
++       }
++    }
++
++    public static <T> T[] add_original(T[] array, int index, T element) {
+         Class<?> clss = null;
+         if (array != null) {
+             clss = array.getClass().getComponentType();
 ```
 
 </details>
