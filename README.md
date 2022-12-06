@@ -6,9 +6,11 @@ Each modification is tagged as: `D4J_<project>_<bugID>_BUGGY_VERSION_INSTRUMENTE
 
 The zipped git archives are included in [instrumented-archives](./instrumented-archives).
 
+*Note: For now, we will only have direct modifications of the buggy source code. Later, we want to introduce an automated mechanism that (given the source code modification) directly instruments the Java bytecode.*
+
 ## Current general issues:
 
-* not all test cases call the method mentioned in the bug report, they call the underlying buggy method
+* not all test cases call the method mentioned in the bug report; they call the underlying buggy method
 
 ## Example: Lang-19
 
