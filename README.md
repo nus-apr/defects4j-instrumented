@@ -52,7 +52,7 @@ index d84aae58..2a0d1f3d 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 3** subjects, for which ARJA can generate a plausible patch.
+The following list includes the already covered subjects. **Total count: 4** subjects, for which ARJA can generate a plausible patch.
 
 <details>
 <summary><b>Lang-19 (Example; cannot be fixed by ARJA)</b></summary>
@@ -191,5 +191,34 @@ index 3c2cf3f2..512110b9 100644
 
 </details>
 
+<details>
+<summary><b>Lang-22</b></summary>
 
+* Bug Report: https://issues.apache.org/jira/browse/LANG-662
+* new tag: `D4J_Lang_22_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/lang3/math/Fraction.java b/src/main/java/org/apache/commons/lang3/math/Fraction.java
+index b36a156a..c7020af7 100644
+--- a/src/main/java/org/apache/commons/lang3/math/Fraction.java
++++ b/src/main/java/org/apache/commons/lang3/math/Fraction.java
+@@ -579,6 +579,15 @@ public final class Fraction extends Number implements Comparable<Fraction> {
+      * @return the greatest common divisor, never zero
+      */
+     private static int greatestCommonDivisor(int u, int v) {
++       int returnValue;
++       returnValue = greatestCommonDivisor_original(u, v);
++       if (u == Integer.MIN_VALUE && v == 2 && returnValue != 2) {
++               throw new RuntimeException("Execution violates behavior specified in the bug report.");
++       }
++       return returnValue;
++    }
++
++    private static int greatestCommonDivisor_original(int u, int v) {
+         // From Commons Math:
+         //if either operand is abs 1, return 1:
+         if (Math.abs(u) <= 1 || Math.abs(v) <= 1) {
+```
+
+</details>
 
