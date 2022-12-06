@@ -114,3 +114,42 @@ index d49da7f4..73e1e67e 100644
 ```
 
 </details>
+
+<details>
+<summary><b>Lang-16</b></summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-746
+* new tag: `D4J_Lang_16_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/lang3/math/NumberUtils.java b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+index 882358f2..4b40ded4 100644
+--- a/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
++++ b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+@@ -442,6 +442,23 @@ public class NumberUtils {
+      * @throws NumberFormatException if the value cannot be converted
+      */
+     public static Number createNumber(String str) throws NumberFormatException {
++       try {
++               return createNumber_original(str);
++       } catch (NumberFormatException e) {
++               if (str != null && (str.startsWith("0X") || str.startsWith("-0X"))) {
++                       try {
++                               Integer.decode(str);
++                       } catch (NumberFormatException e_decode) {
++                               throw e;
++                       }
++                       throw new RuntimeException("Execution violates behavior specified in the bug report.");
++               } else {
++                       throw e;
++               }
++       }
++    }
++
++    public static Number createNumber_original(String str) throws NumberFormatException {
+         if (str == null) {
+             return null;
+         }
+```
+
+</details>
