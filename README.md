@@ -52,7 +52,7 @@ index d84aae58..2a0d1f3d 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 5** subjects, for which ARJA can generate a plausible patch.
+The following list includes the already covered subjects. **Total count: 6** subjects, for which ARJA can generate a plausible patch.
 
 <details>
 <summary><b>Lang-19 (Example; cannot be fixed by ARJA)</b></summary>
