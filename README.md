@@ -275,3 +275,33 @@ index ac22f8fd..cbdb0239 100644
 
 </details>
 
+<details>
+<summary><b>Math-2</b></summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-1021
+* new tag: `D4J_Math_2_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java b/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
+index 27691272f..2c76b29fe 100644
+--- a/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
++++ b/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
+@@ -109,6 +109,15 @@ public class HypergeometricDistribution extends AbstractIntegerDistribution {
+         this.populationSize = populationSize;
+         this.sampleSize = sampleSize;
+     }
++
++    @Override
++    public int sample() {
++       int returnValue = super.sample();
++       if (returnValue < this.getSupportLowerBound() || returnValue > this.getSupportUpperBound()) {
++               throw new RuntimeException("Execution violates behavior specified in the bug report.");
++       }
++       return returnValue;
++    }
+
+     /** {@inheritDoc} */
+     public double cumulativeProbability(int x) {
+```
+
+</details>
