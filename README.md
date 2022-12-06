@@ -8,10 +8,18 @@ The zipped git archives are included in [instrumented-archives](./instrumented-a
 
 *Note: For now, we will only have direct modifications of the buggy source code. Later, we want to introduce an automated mechanism that (given the source code modification) directly instruments the Java bytecode.*
 
-## Current general issues:
+## Current general issues
 
 * not all test cases call the method mentioned in the bug report; they call the underlying buggy method
 * with the additional specificaton from the bug report, other test cases can also fail. They should be fixed with the correct bug though. E.g., Lang-7, a test case interpretes both (the incorrect and the correct) behavior a suitable way so that the test cases passes; but with our instrumentation it fails because we throw a RuntimeException. Correct: throw NumberFormatException. Buggy: return null. The other test case handles both but not our RuntimeException.
+
+## Methodology
+
+* we start with subjects, for which ARJA can generated plausible patch
+* ARJA
+	* considers 224 bugs from Defects4J
+	* plausible patches: 59
+	* correct patches: 18
 
 ## Example: Lang-19
 
@@ -44,10 +52,10 @@ index d84aae58..2a0d1f3d 100644
 
 ## Progress
 
-The following list includes the already covered subjects.
+The following list includes the already covered subjects. **Total count: 3** subjects, for which ARJA can generate a plausible patch.
 
 <details>
-<summary><b>Lang-19</b></summary>
+<summary><b>Lang-19 (Example; cannot be fixed by ARJA)</b></summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-710
 * new tag: `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
