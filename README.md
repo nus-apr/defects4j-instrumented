@@ -6,11 +6,11 @@ Each modification is tagged as: `D4J_<project>_<bugID>_BUGGY_VERSION_INSTRUMENTE
 
 The zipped git archives are included in [instrumented-archives](./instrumented-archives).
 
-### Current general issues:
+## Current general issues:
 
 * not all test cases call the method mentioned in the bug report, they call the underlying buggy method
 
-### Example: Lang-19
+## Example: Lang-19
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-710
 * new tag: `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
@@ -31,7 +31,7 @@ public static final String unescapeHtml4(String input) {
 }
 ```
 
-### Progress
+## Progress
 
 The following list includes the already covered subjects.
 
