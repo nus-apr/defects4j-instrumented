@@ -62,13 +62,12 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 7** subjects.
+The following list includes the already covered subjects. **Total count: 8** subjects.
 
 * 1 ARJA cannot produce a plausible patch
-* 4 ARJA can generate a plausible but incorrect patch
+* 5 ARJA can generate a plausible but incorrect patch
 * 2 ARJA can produce correct patch.
 
----
 
 <details>
 <summary><b>Lang-19</b> (Example; ARJA no plausible patch)</summary>
@@ -352,18 +351,64 @@ index 27691272f..59287e081 100644
      public double cumulativeProbability(int x) {
          double ret;
 ```
-
-<!--
 </details>
+
+<details>
+<summary><b>Math-8</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-942
+* new tag: `D4J_Math_8_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java b/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java
+index 5cb0e4382..58c8b5b54 100644
+--- a/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java
++++ b/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java
+@@ -179,6 +179,26 @@ public class DiscreteDistribution<T> {
+      * positive.
+      */
+     public T[] sample(int sampleSize) throws NotStrictlyPositiveException {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            T[] resultValue = null;
++            try {
++                resultValue = sample_orig(sampleSize);
++            } catch (ArrayStoreException e) {
++                Class typeT = ((T) new Object()).getClass();
++                Object singletonObject = singletons.get(0);
++                if (typeT.isInstance(singletonObject) && !typeT.equals(singletonObject.getClass())) {
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                } else {
++                    throw e;
++                }
++            }
++            return resultValue;
++        } else {
++            return sample_orig(sampleSize);
++        }
++    }
++
++    public T[] sample_orig(int sampleSize) throws NotStrictlyPositiveException {
+         if (sampleSize <= 0) {
+             throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,
+                     sampleSize);
+```
+</details>
+
+
+
+## Not Supported Subjects
+
+The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 1** subject.
 
 <details>
 <summary><b>Math-6</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-949
-* new tag: `D4J_Math_6_BUGGY_VERSION_INSTRUMENTED`
 
-```diff
-```
+> "The method LevenbergMarquardtOptimizer.getIterations() does not report the correct number of iterations; It always returns 0. A quick look at the code shows that only SimplexOptimizer calls BaseOptimizer.incrementEvaluationsCount()
+> 
+> I've put a test case below. Notice how the evaluations count is correctly incremented, but the iterations count is not."
+
+The bug report says that the method always returns zero but does not say when it is correct and when it is incorrect. It provides a test case; however, this one is already included in the defects4j test suite.
 
 </details>
--->
