@@ -150,27 +150,31 @@ index d49da7f4..c3c8bbde 100644
 
 ```diff
 diff --git a/src/main/java/org/apache/commons/lang3/math/NumberUtils.java b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
-index 882358f2..4b40ded4 100644
+index 882358f2..39bffaeb 100644
 --- a/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
 +++ b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
-@@ -442,6 +442,23 @@ public class NumberUtils {
+@@ -442,6 +442,27 @@ public class NumberUtils {
       * @throws NumberFormatException if the value cannot be converted
       */
      public static Number createNumber(String str) throws NumberFormatException {
-+       try {
-+               return createNumber_original(str);
-+       } catch (NumberFormatException e) {
-+               if (str != null && (str.startsWith("0X") || str.startsWith("-0X"))) {
-+                       try {
-+                               Integer.decode(str);
-+                       } catch (NumberFormatException e_decode) {
-+                               throw e;
-+                       }
-+                       throw new RuntimeException("Execution violates behavior specified in the bug report.");
-+               } else {
-+                       throw e;
-+               }
-+       }
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                return createNumber_original(str);
++            } catch (NumberFormatException e) {
++                if (str != null && (str.startsWith("0X") || str.startsWith("-0X"))) {
++                    try {
++                        Integer.decode(str);
++                    } catch (NumberFormatException e_decode) {
++                        throw e;
++                    }
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                } else {
++                    throw e;
++                }
++            }
++        } else {
++            return createNumber_original(str);
++        }
 +    }
 +
 +    public static Number createNumber_original(String str) throws NumberFormatException {
@@ -189,18 +193,22 @@ index 882358f2..4b40ded4 100644
 
 ```diff
 diff --git a/src/main/java/org/apache/commons/lang3/StringUtils.java b/src/main/java/org/apache/commons/lang3/StringUtils.java
-index 3c2cf3f2..512110b9 100644
+index 3c2cf3f2..dde35b27 100644
 --- a/src/main/java/org/apache/commons/lang3/StringUtils.java
 +++ b/src/main/java/org/apache/commons/lang3/StringUtils.java
-@@ -3227,6 +3227,14 @@ public class StringUtils {
+@@ -3227,6 +3227,18 @@ public class StringUtils {
       * @since 3.0 Changed signature to use varargs
       */
      public static <T> String join(T... elements) {
-+       try {
-+               return join_original(elements);
-+       } catch (NullPointerException e) {
-+               throw new RuntimeException("Execution violates behavior specified in the bug report.");
-+       }
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                return join_original(elements);
++            } catch (NullPointerException e) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++        } else {
++            return join_original(elements);
++        }
 +    }
 +
 +    public static <T> String join_original(T... elements) {
@@ -218,19 +226,23 @@ index 3c2cf3f2..512110b9 100644
 
 ```diff
 diff --git a/src/main/java/org/apache/commons/lang3/math/Fraction.java b/src/main/java/org/apache/commons/lang3/math/Fraction.java
-index b36a156a..c7020af7 100644
+index b36a156a..b2dc787c 100644
 --- a/src/main/java/org/apache/commons/lang3/math/Fraction.java
 +++ b/src/main/java/org/apache/commons/lang3/math/Fraction.java
-@@ -579,6 +579,15 @@ public final class Fraction extends Number implements Comparable<Fraction> {
+@@ -579,6 +579,19 @@ public final class Fraction extends Number implements Comparable<Fraction> {
       * @return the greatest common divisor, never zero
       */
      private static int greatestCommonDivisor(int u, int v) {
-+       int returnValue;
-+       returnValue = greatestCommonDivisor_original(u, v);
-+       if (u == Integer.MIN_VALUE && v == 2 && returnValue != 2) {
-+               throw new RuntimeException("Execution violates behavior specified in the bug report.");
-+       }
-+       return returnValue;
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            int returnValue;
++            returnValue = greatestCommonDivisor_original(u, v);
++            if (u == Integer.MIN_VALUE && v == 2 && returnValue != 2) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++            return returnValue;
++        } else {
++            return greatestCommonDivisor_original(u, v);
++        }
 +    }
 +
 +    private static int greatestCommonDivisor_original(int u, int v) {
@@ -249,41 +261,49 @@ index b36a156a..c7020af7 100644
 
 ```diff
 diff --git a/src/main/java/org/apache/commons/lang3/ArrayUtils.java b/src/main/java/org/apache/commons/lang3/ArrayUtils.java
-index ac22f8fd..cbdb0239 100644
+index ac22f8fd..32d6f0e5 100644
 --- a/src/main/java/org/apache/commons/lang3/ArrayUtils.java
 +++ b/src/main/java/org/apache/commons/lang3/ArrayUtils.java
-@@ -3286,6 +3286,18 @@ public class ArrayUtils {
+@@ -3286,6 +3286,22 @@ public class ArrayUtils {
       * @throws IllegalArgumentException if both arguments are null
       */
      public static <T> T[] add(T[] array, T element) {
-+       try {
-+               return add_original(array, element);
-+       } catch (ClassCastException e) {
-+               if (array == null && element == null) {
-+                       throw new RuntimeException("Execution violates behavior specified in the bug report.");
-+               } else {
-+                       throw e;
-+               }
-+       }
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                return add_original(array, element);
++            } catch (ClassCastException e) {
++                if (array == null && element == null) {
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                } else {
++                    throw e;
++                }
++            }
++        } else {
++            return add_original(array, element);
++        }
 +    }
 +
 +    public static <T> T[] add_original(T[] array, T element) {
          Class<?> type;
          if (array != null){
              type = array.getClass();
-@@ -3565,6 +3577,18 @@ public class ArrayUtils {
+@@ -3565,6 +3581,22 @@ public class ArrayUtils {
       * @throws IllegalArgumentException if both array and element are null
       */
      public static <T> T[] add(T[] array, int index, T element) {
-+       try {
-+               return add_original(array, index, element);
-+       } catch (ClassCastException e) {
-+               if (array == null && element == null) {
-+                       throw new RuntimeException("Execution violates behavior specified in the bug report.");
-+               } else {
-+                       throw e;
-+               }
-+       }
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                return add_original(array, index, element);
++            } catch (ClassCastException e) {
++                if (array == null && element == null) {
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                } else {
++                    throw e;
++                }
++            }
++        } else {
++            return add_original(array, index, element);
++        }
 +    }
 +
 +    public static <T> T[] add_original(T[] array, int index, T element) {
@@ -302,25 +322,29 @@ index ac22f8fd..cbdb0239 100644
 
 ```diff
 diff --git a/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java b/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
-index 27691272f..2c76b29fe 100644
+index 27691272f..0c8698331 100644
 --- a/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
 +++ b/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
-@@ -109,6 +109,15 @@ public class HypergeometricDistribution extends AbstractIntegerDistribution {
-         this.populationSize = populationSize;
+@@ -110,6 +110,19 @@ public class HypergeometricDistribution extends AbstractIntegerDistribution {
          this.sampleSize = sampleSize;
      }
-+
+
 +    @Override
 +    public int sample() {
-+       int returnValue = super.sample();
-+       if (returnValue < this.getSupportLowerBound() || returnValue > this.getSupportUpperBound()) {
-+               throw new RuntimeException("Execution violates behavior specified in the bug report.");
-+       }
-+       return returnValue;
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            int returnValue = super.sample();
++            if (returnValue < this.getSupportLowerBound() || returnValue > this.getSupportUpperBound()) {
++                throw new RuntimeException("Execution violates behavior specified in the bug report.");
++            }
++            return returnValue;
++        } else {
++            return super.sample();
++        }
 +    }
-
++
      /** {@inheritDoc} */
      public double cumulativeProbability(int x) {
+         double ret;
 ```
 
 </details>
