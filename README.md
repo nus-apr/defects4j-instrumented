@@ -62,10 +62,16 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 6** subjects, for which ARJA can generate a plausible patch.
+The following list includes the already covered subjects. **Total count: 7** subjects.
+
+* 1 ARJA cannot produce a plausible patch
+* 4 ARJA can generate a plausible but incorrect patch
+* 2 ARJA can produce correct patch.
+
+---
 
 <details>
-<summary><b>Lang-19 (Example; cannot be fixed by ARJA)</b></summary>
+<summary><b>Lang-19</b> (Example; ARJA no plausible patch)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-710
 * new tag: `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
@@ -103,7 +109,7 @@ index d84aae58..f5757eac 100644
 </details>
 
 <details>
-<summary><b>Lang-7</b></summary>
+<summary><b>Lang-7</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-822
 * new tag: `D4J_Lang_7_BUGGY_VERSION_INSTRUMENTED`
@@ -143,7 +149,7 @@ index d49da7f4..c3c8bbde 100644
 </details>
 
 <details>
-<summary><b>Lang-16</b></summary>
+<summary><b>Lang-16</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-746
 * new tag: `D4J_Lang_16_BUGGY_VERSION_INSTRUMENTED`
@@ -186,7 +192,7 @@ index 882358f2..39bffaeb 100644
 </details>
 
 <details>
-<summary><b>Lang-20</b></summary>
+<summary><b>Lang-20</b> (ARJA correct)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-703
 * new tag: `D4J_Lang_20_BUGGY_VERSION_INSTRUMENTED`
@@ -219,7 +225,7 @@ index 3c2cf3f2..dde35b27 100644
 </details>
 
 <details>
-<summary><b>Lang-22</b></summary>
+<summary><b>Lang-22</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-662
 * new tag: `D4J_Lang_22_BUGGY_VERSION_INSTRUMENTED`
@@ -254,7 +260,7 @@ index b36a156a..b2dc787c 100644
 </details>
 
 <details>
-<summary><b>Lang-35</b></summary>
+<summary><b>Lang-35</b> (ARJA correct)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-571
 * new tag: `D4J_Lang_35_BUGGY_VERSION_INSTRUMENTED`
@@ -315,14 +321,14 @@ index ac22f8fd..32d6f0e5 100644
 </details>
 
 <details>
-<summary><b>Math-2</b></summary>
+<summary><b>Math-2</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-1021
 * new tag: `D4J_Math_2_BUGGY_VERSION_INSTRUMENTED`
 
 ```diff
 diff --git a/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java b/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
-index 27691272f..0c8698331 100644
+index 27691272f..59287e081 100644
 --- a/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
 +++ b/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
 @@ -110,6 +110,19 @@ public class HypergeometricDistribution extends AbstractIntegerDistribution {
@@ -334,7 +340,7 @@ index 27691272f..0c8698331 100644
 +        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            int returnValue = super.sample();
 +            if (returnValue < this.getSupportLowerBound() || returnValue > this.getSupportUpperBound()) {
-+                throw new RuntimeException("Execution violates behavior specified in the bug report.");
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
 +            }
 +            return returnValue;
 +        } else {
@@ -347,4 +353,17 @@ index 27691272f..0c8698331 100644
          double ret;
 ```
 
+<!--
 </details>
+
+<details>
+<summary><b>Math-6</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-949
+* new tag: `D4J_Math_6_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+```
+
+</details>
+-->
