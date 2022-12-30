@@ -402,17 +402,16 @@ index 5cb0e4382..58c8b5b54 100644
 
 ```diff
 diff --git a/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java b/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
-index 4b7dbf6bb..1602b68ea 100644
+index 4b7dbf6bb..7465d02ea 100644
 --- a/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
 +++ b/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
-@@ -316,6 +316,22 @@ public class CMAESOptimizer
+@@ -316,6 +316,21 @@ public class CMAESOptimizer
          this.generateStatistics = generateStatistics;
      }
 
 +    @Override
 +    public PointValuePair optimize(int maxEval, MultivariateFunction f, GoalType goalType, double[] startPoint,
 +            double[] lower, double[] upper) {
-+        System.setProperty("defects4j.instrumentation.enabled", "true");
 +        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            PointValuePair resultValue = super.optimize(maxEval, f, goalType, startPoint, lower, upper);
 +            if (resultValue.getPoint()[0] > upper[0]) {
@@ -431,11 +430,22 @@ index 4b7dbf6bb..1602b68ea 100644
 ```
 </details>
 
+<details>
+<summary><b>Math-28</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-828
+* new tag: `D4J_Math_28_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+
+```
+</details>
+
 
 
 ## Not Supported Subjects
 
-The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 1** subject.
+The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 2** subject.
 
 <details>
 <summary><b>Math-6</b> (ARJA plausible but incorrect)</summary>
@@ -447,5 +457,16 @@ The following list includes subjects, for which the bug report does not contain 
 > I've put a test case below. Notice how the evaluations count is correctly incremented, but the iterations count is not."
 
 The bug report says that the method always returns zero but does not say when it is correct and when it is incorrect. It provides a test case; however, this one is already included in the defects4j test suite.
+
+</details>
+
+<details>
+<summary><b>Math-28</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-828
+
+> SimplexSolver throws UnboundedSolutionException when trying to solve minimization linear programming problem. The number of exception thrown depends on the number of variables.
+
+The bug report says that the `SimplexSolver` throws an `UnboundedSolutionException,` but it remains unclear when it is expected and when unexpected. So we might not be able to write a general oracle. Also the test throws a different exception: `MaxCountExceededException`. Both extend the `MathIllegalStateException`, which is expected *“if no solution fulfilling the constraints can be found in the allowed number of iterations”*.
 
 </details>
