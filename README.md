@@ -62,10 +62,10 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 9** subjects.
+The following list includes the already covered subjects. **Total count: 10** subjects.
 
 * 1 ARJA cannot produce a plausible patch
-* 6 ARJA can generate a plausible but incorrect patch
+* 7 ARJA can generate a plausible but incorrect patch
 * 2 ARJA can produce correct patch.
 
 
@@ -431,13 +431,47 @@ index 4b7dbf6bb..7465d02ea 100644
 </details>
 
 <details>
-<summary><b>Math-28</b> (ARJA plausible but incorrect)</summary>
+<summary><b>Math-31</b> (ARJA plausible but incorrect)</summary>
 
-* Bug Report: https://issues.apache.org/jira/browse/MATH-828
-* new tag: `D4J_Math_28_BUGGY_VERSION_INSTRUMENTED`
+* Bug Report: https://issues.apache.org/jira/browse/MATH-718
+* new tag: `D4J_Math_31_BUGGY_VERSION_INSTRUMENTED`
 
 ```diff
+diff --git a/src/main/java/org/apache/commons/math3/distribution/BinomialDistribution.java b/src/main/java/org/apache/commons/math3/distribution/BinomialDistribution.java
+index 505b93f3b..a761347fc 100644
+--- a/src/main/java/org/apache/commons/math3/distribution/BinomialDistribution.java
++++ b/src/main/java/org/apache/commons/math3/distribution/BinomialDistribution.java
+@@ -18,6 +18,7 @@ package org.apache.commons.math3.distribution;
 
+ import org.apache.commons.math3.exception.OutOfRangeException;
+ import org.apache.commons.math3.exception.NotPositiveException;
++import org.apache.commons.math3.exception.NumberIsTooLargeException;
+ import org.apache.commons.math3.exception.util.LocalizedFormats;
+ import org.apache.commons.math3.special.Beta;
+ import org.apache.commons.math3.util.FastMath;
+@@ -59,6 +60,22 @@ public class BinomialDistribution extends AbstractIntegerDistribution {
+         numberOfTrials = trials;
+     }
+
++    @Override
++    public int inverseCumulativeProbability(final double p) throws OutOfRangeException {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            int resultValue = super.inverseCumulativeProbability(p);
++            if (p == 0.5 && this.probabilityOfSuccess == 0.5) {
++                int expectedValue = (int) (numberOfTrials * 0.5);
++                if (resultValue < expectedValue - 1 || resultValue > expectedValue + 1) {
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                }
++            }
++            return resultValue;
++        } else {
++            return super.inverseCumulativeProbability(p);
++        }
++    }
++
+     /**
+      * Access the number of trials for this distribution.
+      *
 ```
 </details>
 
