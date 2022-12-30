@@ -62,10 +62,10 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 8** subjects.
+The following list includes the already covered subjects. **Total count: 9** subjects.
 
 * 1 ARJA cannot produce a plausible patch
-* 5 ARJA can generate a plausible but incorrect patch
+* 6 ARJA can generate a plausible but incorrect patch
 * 2 ARJA can produce correct patch.
 
 
@@ -391,6 +391,43 @@ index 5cb0e4382..58c8b5b54 100644
          if (sampleSize <= 0) {
              throw new NotStrictlyPositiveException(LocalizedFormats.NUMBER_OF_SAMPLES,
                      sampleSize);
+```
+</details>
+
+<details>
+<summary><b>Math-20</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-864
+* new tag: `D4J_Math_20_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java b/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
+index 4b7dbf6bb..1602b68ea 100644
+--- a/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
++++ b/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
+@@ -316,6 +316,22 @@ public class CMAESOptimizer
+         this.generateStatistics = generateStatistics;
+     }
+
++    @Override
++    public PointValuePair optimize(int maxEval, MultivariateFunction f, GoalType goalType, double[] startPoint,
++            double[] lower, double[] upper) {
++        System.setProperty("defects4j.instrumentation.enabled", "true");
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            PointValuePair resultValue = super.optimize(maxEval, f, goalType, startPoint, lower, upper);
++            if (resultValue.getPoint()[0] > upper[0]) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            } else {
++                return resultValue;
++            }
++        } else {
++            return super.optimize(maxEval, f, goalType, startPoint, lower, upper);
++        }
++    }
++
+     /**
+      * @return History of sigma values.
+      */
 ```
 </details>
 
