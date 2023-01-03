@@ -62,15 +62,15 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 12** subjects.
+The following list includes the already covered subjects. **Total count: 13** subjects.
 
-* 1 ARJA cannot produce a plausible patch
+* 2 ARJA cannot produce a plausible patch
 * 9 ARJA can generate a plausible but incorrect patch
 * 2 ARJA can produce correct patch.
 
 
 <details>
-<summary><b>Lang-19</b> (Example; ARJA no plausible patch)</summary>
+<summary><b>Lang-19</b> (Example; ARJA implausible)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-710
 * new tag: `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
@@ -519,7 +519,33 @@ index 5db488466..19656d939 100644
 </details>
 
 <details>
-<summary><b>Math-65</b> (ARJA plausible but incorrect)</summary>
+<summary><b>Math-56</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-552
+* new tag: `D4J_Math_56_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java b/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
+index 56c9ffebc..efb2647af 100644
+--- a/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
++++ b/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
+@@ -242,6 +242,12 @@ public class MultidimensionalCounter implements Iterable<Integer> {
+         --idx;
+         indices[last] = idx;
+
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            if (indices[last] != index - count) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++        }
++
+         return indices;
+     }
+```
+</details>
+
+<details>
+<summary><b>Math-65</b> (ARJA implausible)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-377
 * new tag: `D4J_Math_65_BUGGY_VERSION_INSTRUMENTED`
