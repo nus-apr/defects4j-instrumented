@@ -62,10 +62,10 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 10** subjects.
+The following list includes the already covered subjects. **Total count: 11** subjects.
 
 * 1 ARJA cannot produce a plausible patch
-* 7 ARJA can generate a plausible but incorrect patch
+* 8 ARJA can generate a plausible but incorrect patch
 * 2 ARJA can produce correct patch.
 
 
@@ -472,6 +472,49 @@ index 505b93f3b..a761347fc 100644
      /**
       * Access the number of trials for this distribution.
       *
+```
+</details>
+
+<details>
+<summary><b>Math-49</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-645
+* new tag: `D4J_Math_49_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java b/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+index 5db488466..19656d939 100644
+--- a/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
++++ b/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+@@ -17,6 +17,7 @@
+ package org.apache.commons.math.linear;
+
+ import java.io.Serializable;
++import java.util.ConcurrentModificationException;
+
+ import org.apache.commons.math.exception.MathArithmeticException;
+ import org.apache.commons.math.exception.util.LocalizedFormats;
+@@ -365,6 +366,20 @@ public class OpenMapRealVector extends AbstractRealVector
+
+     /** {@inheritDoc} */
+     public OpenMapRealVector ebeMultiply(RealVector v) {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            OpenMapRealVector returnValue = null;
++            try {
++                returnValue = ebeMultiply_original(v);
++            } catch (ConcurrentModificationException e) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++            return returnValue;
++        } else {
++            return ebeMultiply_original(v);
++        }
++    }
++
++    public OpenMapRealVector ebeMultiply_original(RealVector v) {
+         checkVectorDimensions(v.getDimension());
+         OpenMapRealVector res = new OpenMapRealVector(this);
+         Iterator iter = res.entries.iterator();
 ```
 </details>
 
