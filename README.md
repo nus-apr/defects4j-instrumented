@@ -62,10 +62,10 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 11** subjects.
+The following list includes the already covered subjects. **Total count: 12** subjects.
 
 * 1 ARJA cannot produce a plausible patch
-* 8 ARJA can generate a plausible but incorrect patch
+* 9 ARJA can generate a plausible but incorrect patch
 * 2 ARJA can produce correct patch.
 
 
@@ -518,6 +518,39 @@ index 5db488466..19656d939 100644
 ```
 </details>
 
+<details>
+<summary><b>Math-65</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-377
+* new tag: `D4J_Math_65_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java b/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
+index 30ebfff21..6f91c53a3 100644
+--- a/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
++++ b/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
+@@ -252,6 +252,19 @@ public abstract class AbstractLeastSquaresOptimizer implements DifferentiableMul
+      * @return chi-square value
+      */
+     public double getChiSquare() {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            double returnValue = getChiSquare_original();
++            if (getRMS() != Math.sqrt(returnValue / rows)) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            } else {
++                return returnValue;
++            }
++        } else {
++            return getChiSquare_original();
++        }
++    }
++
++    public double getChiSquare_original() {
+         double chiSquare = 0;
+         for (int i = 0; i < rows; ++i) {
+             final double residual = residuals[i];
+```
+</details>
 
 
 ## Not Supported Subjects
