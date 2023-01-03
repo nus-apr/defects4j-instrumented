@@ -62,10 +62,10 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 13** subjects.
+The following list includes the already covered subjects. **Total count: 14** subjects.
 
 * 2 ARJA cannot produce a plausible patch
-* 9 ARJA can generate a plausible but incorrect patch
+* 10 ARJA can generate a plausible but incorrect patch
 * 2 ARJA can produce correct patch.
 
 
@@ -541,6 +541,43 @@ index 56c9ffebc..efb2647af 100644
 +
          return indices;
      }
+```
+</details>
+
+<details>
+<summary><b>Math-60</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-414
+* new tag: `D4J_Math_60_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/math/distribution/NormalDistributionImpl.java b/src/main/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
+index 0e124d852..f9649d5e5 100644
+--- a/src/main/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
++++ b/src/main/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
+@@ -122,6 +122,22 @@ public class NormalDistributionImpl extends AbstractContinuousDistribution
+      * @throws MathException if the algorithm fails to converge
+      */
+     public double cumulativeProbability(double x) throws MathException {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                return cumulativeProbability_original(x);
++            } catch (org.apache.commons.math.ConvergenceException e) {
++                if (x < (mean - 20 * standardDeviation) || x > (mean + 20 * standardDeviation)) {
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                } else {
++                    throw e;
++                }
++            }
++        } else {
++            return cumulativeProbability_original(x);
++        }
++    }
++
++    public double cumulativeProbability_original(double x) throws MathException {
+         final double dev = x - mean;
+         try {
+         return 0.5 * (1.0 + Erf.erf((dev) /
 ```
 </details>
 
