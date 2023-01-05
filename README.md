@@ -62,10 +62,10 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 15** subjects.
+The following list includes the already covered subjects. **Total count: 16** subjects.
 
 * 2 ARJA cannot produce a plausible patch
-* 11 ARJA can generate a plausible but incorrect patch
+* 12 ARJA can generate a plausible but incorrect patch
 * 2 ARJA can produce correct patch.
 
 
@@ -659,6 +659,47 @@ index 2d6b17e29..0198886ec 100644
    /** {@inheritDoc} */
    @Override
    public int getOrder() {
+```
+</details>
+
+<details>
+<summary><b>Math-74</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-338
+* new tag: `D4J_Math_71_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java b/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+index 6f3e88358..d8b83d2c7 100644
+--- a/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
++++ b/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+@@ -246,8 +246,26 @@ public abstract class EmbeddedRungeKuttaIntegrator
+           if (vecAbsoluteTolerance == null) {
+               scale = new double[y0.length];
+               java.util.Arrays.fill(scale, scalAbsoluteTolerance);
++
++              if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++                  for (int i=0; i<scale.length; i++) {
++                      double yi = Math.max(Math.abs(y0[i]), Math.abs(y0[i]));
++                      if (scale[i] != scalAbsoluteTolerance + scalRelativeTolerance * yi) {
++                          throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                      }
++                  }
++              }
+             } else {
+               scale = vecAbsoluteTolerance;
++
++              if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++                  for (int i=0; i<scale.length; i++) {
++                      double yi = Math.max(Math.abs(y0[i]), Math.abs(y0[i]));
++                      if (scale[i] != vecAbsoluteTolerance[i] + vecAbsoluteTolerance[i] * yi) {
++                          throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                      }
++                  }
++              }
+             }
+           hNew = initializeStep(equations, forward, getOrder(), scale,
+                                 stepStart, y, yDotK[0], yTmp, yDotK[1]);
 ```
 </details>
 
