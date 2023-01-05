@@ -618,7 +618,7 @@ index 30ebfff21..6f91c53a3 100644
 
 ## Not Supported Subjects
 
-The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 2** subject.
+The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 3** subject.
 
 <details>
 <summary><b>Math-6</b> (ARJA plausible but incorrect)</summary>
@@ -643,3 +643,16 @@ The bug report says that the method always returns zero but does not say when it
 The bug report says that the `SimplexSolver` throws an `UnboundedSolutionException,` but it remains unclear when it is expected and when unexpected. So we might not be able to write a general oracle. Also the test throws a different exception: `MaxCountExceededException`. Both extend the `MathIllegalStateException`, which is expected *“if no solution fulfilling the constraints can be found in the allowed number of iterations”*.
 
 </details>
+
+<details>
+<summary><b>Math-68</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-362
+
+> LevenbergMarquardtOptimizer ignores the VectorialConvergenceChecker parameter passed to it. This makes it hard to specify custom stopping criteria for the optimizer.
+
+→ The bug report does not provide enough information for an assertion.
+
+</details>
+
+
