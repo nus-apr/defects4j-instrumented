@@ -62,10 +62,10 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 16** subjects.
+The following list includes the already covered subjects. **Total count: 17** subjects.
 
 * 2 ARJA cannot produce a plausible patch
-* 12 ARJA can generate a plausible but incorrect patch
+* 13 ARJA can generate a plausible but incorrect patch
 * 2 ARJA can produce correct patch.
 
 
@@ -703,10 +703,49 @@ index 6f3e88358..d8b83d2c7 100644
 ```
 </details>
 
+<details>
+<summary><b>Math-81</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-308
+* new tag: `D4J_Math_81_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+index 2d0d72f22..2c95c46ab 100644
+--- a/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
++++ b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+@@ -186,10 +186,21 @@ public class EigenDecompositionImpl implements EigenDecomposition {
+      * @exception InvalidMatrixException (wrapping a {@link
+      * org.apache.commons.math.ConvergenceException} if algorithm fails to converge
+      */
+-    public EigenDecompositionImpl(final double[] main, double[] secondary,
+-            final double splitTolerance)
+-        throws InvalidMatrixException {
++    public EigenDecompositionImpl(final double[] main, double[] secondary, final double splitTolerance)
++            throws InvalidMatrixException {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                this.init_original(main, secondary, splitTolerance);
++            } catch (ArrayIndexOutOfBoundsException e) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++        } else {
++            this.init_original(main, secondary, splitTolerance);
++        }
++    }
+
++    private void init_original(final double[] main, double[] secondary, final double splitTolerance)
++            throws InvalidMatrixException {
+         this.main      = main.clone();
+         this.secondary = secondary.clone();
+         transformer    = null;
+```
+</details>
+
 
 ## Not Supported Subjects
 
-The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 3** subject.
+The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 4** subject.
 
 <details>
 <summary><b>Math-6</b> (ARJA plausible but incorrect)</summary>
@@ -740,6 +779,17 @@ The bug report says that the `SimplexSolver` throws an `UnboundedSolutionExcepti
 > LevenbergMarquardtOptimizer ignores the VectorialConvergenceChecker parameter passed to it. This makes it hard to specify custom stopping criteria for the optimizer.
 
 → The bug report does not provide enough information for an assertion.
+
+</details>
+
+<details>
+<summary><b>Math-80</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-318
+
+> Some results computed by EigenDecompositionImpl are wrong. The following case computed by Fortran Lapack fails with version 2.0
+
+→ only one failing test case, which is already added to the test suite in Defects4J
 
 </details>
 
