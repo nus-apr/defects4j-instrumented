@@ -62,11 +62,11 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 24** subjects.
+The following list includes the already covered subjects. **Total count: 27** subjects.
 
 * 2 ARJA cannot produce a plausible patch
 * 15 ARJA can generate a plausible but incorrect patch
-* 7 ARJA can produce correct patch.
+* 10 ARJA can produce correct patch.
 
 
 <details>
@@ -757,6 +757,15 @@ index 30ebfff21..6f91c53a3 100644
 </details>
 
 <details>
+<summary><b>Math-70</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-369
+* new tag: `D4J_Math_70_BUGGY_VERSION_INSTRUMENTED`
+* [math_70.diff](./instrumented-diffs/math_70.diff)
+
+</details>
+
+<details>
 <summary><b>Math-71</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-358
@@ -801,6 +810,15 @@ index 2d6b17e29..0198886ec 100644
    @Override
    public int getOrder() {
 ```
+</details>
+
+<details>
+<summary><b>Math-73</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-343
+* new tag: `D4J_Math_73_BUGGY_VERSION_INSTRUMENTED`
+* [math_73.diff](./instrumented-diffs/math_73.diff)
+
 </details>
 
 <details>
@@ -919,6 +937,16 @@ index e19e97aef..c7a09e90d 100644
 </details>
 
 <details>
+<summary><b>Math-98</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-209
+* new tag: `D4J_Math_98_BUGGY_VERSION_INSTRUMENTED`
+* [math_98.diff](./instrumented-diffs/math_98.diff)
+
+</details>
+
+
+<details>
 <summary><b>Math-103</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-167
@@ -960,7 +988,7 @@ index 02810e142..6ad17ac5b 100644
 
 ## Not Supported Subjects
 
-The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 8** subject.
+The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 9** subject.
 
 <details>
 <summary><b>Math-5</b> (ARJA corret)</summary>
@@ -1051,6 +1079,18 @@ The provided test throws: `org.apache.commons.math.optimization.OptimizationExce
 * Bug Report: https://issues.apache.org/jira/browse/MATH-280
 
 The provided test case throws an `ConvergenceException`, which is generally not a bug. Without more information, we cannot formulate a general oracle. Looking at the developer-provided patch it gets clear that a `ConvergenceException` is not acceptable if `fa` or `fb` are `0`, but this information is **not** included in the report.
+
+</details>
+
+<details>
+<summary><b>Math-86</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-274
+
+> And it should throw an exception but it does not. I tested the matrix in R and R's cholesky decomposition method returns that the matrix is not symmetric positive definite.
+> 
+
+Condition for a check is not known; in fact this check is wrong in the current implementation and needs repair.
 
 </details>
 
