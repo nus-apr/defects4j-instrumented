@@ -62,11 +62,11 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 17** subjects.
+The following list includes the already covered subjects. **Total count: 22** subjects.
 
 * 2 ARJA cannot produce a plausible patch
-* 13 ARJA can generate a plausible but incorrect patch
-* 2 ARJA can produce correct patch.
+* 15 ARJA can generate a plausible but incorrect patch
+* 5 ARJA can produce correct patch.
 
 
 <details>
@@ -431,6 +431,93 @@ index 4b7dbf6bb..7465d02ea 100644
 </details>
 
 <details>
+<summary><b>Math-22</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-859
+* new tag: `D4J_Math_22_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/math3/distribution/FDistribution.java b/src/main/java/org/apache/commons/math3/distribution/FDistribution.java
+index 8b0993c4d..a66094077 100644
+--- a/src/main/java/org/apache/commons/math3/distribution/FDistribution.java
++++ b/src/main/java/org/apache/commons/math3/distribution/FDistribution.java
+@@ -126,6 +126,33 @@ public class FDistribution extends AbstractRealDistribution {
+      * @since 2.1
+      */
+     public double density(double x) {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            double returnValue = density_original(x);
++            double upperBound = getSupportUpperBound();
++            double lowerBound = getSupportLowerBound();
++            if (x == upperBound) {
++                boolean upperBoundRule = !isSupportUpperBoundInclusive() || !Double.isInfinite(returnValue) && !Double.isNaN(returnValue);
++                if (!upperBoundRule) {
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                } else {
++                    return returnValue;
++                }
++            } else if (x == lowerBound) {
++                boolean lowerBoundRule = !isSupportLowerBoundInclusive() || !Double.isInfinite(returnValue) && !Double.isNaN(returnValue);
++                if (!lowerBoundRule) {
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                } else {
++                    return returnValue;
++                }
++            } else {
++                return returnValue;
++            }
++        } else {
++            return density_original(x);
++        }
++    }
++
++    public double density_original(double x) {
+         final double nhalf = numeratorDegreesOfFreedom / 2;
+         final double mhalf = denominatorDegreesOfFreedom / 2;
+         final double logx = FastMath.log(x);
+diff --git a/src/main/java/org/apache/commons/math3/distribution/UniformRealDistribution.java b/src/main/java/org/apache/commons/math3/distribution/UniformRealDistribution.java
+index 5d32f6ebf..179cd2adc 100644
+--- a/src/main/java/org/apache/commons/math3/distribution/UniformRealDistribution.java
++++ b/src/main/java/org/apache/commons/math3/distribution/UniformRealDistribution.java
+@@ -106,6 +106,33 @@ public class UniformRealDistribution extends AbstractRealDistribution {
+
+     /** {@inheritDoc} */
+     public double density(double x) {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            double returnValue = density_original(x);
++            double upperBound = getSupportUpperBound();
++            double lowerBound = getSupportLowerBound();
++            if (x == upperBound) {
++                boolean upperBoundRule = !isSupportUpperBoundInclusive() || !Double.isInfinite(returnValue) && !Double.isNaN(returnValue);
++                if (!upperBoundRule) {
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                } else {
++                    return returnValue;
++                }
++            } else if (x == lowerBound) {
++                boolean lowerBoundRule = !isSupportLowerBoundInclusive() || !Double.isInfinite(returnValue) && !Double.isNaN(ret
+urnValue);
++                if (!lowerBoundRule) {
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                } else {
++                    return returnValue;
++                }
++            } else {
++                return returnValue;
++            }
++        } else {
++            return density_original(x);
++        }
++    }
++
++    public double density_original(double x) {
+         if (x < lower || x > upper) {
+             return 0.0;
+         }
+```
+</details>
+
+<details>
 <summary><b>Math-31</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-718
@@ -476,6 +563,33 @@ index 505b93f3b..a761347fc 100644
 </details>
 
 <details>
+<summary><b>Math-39</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-227
+* new tag: `D4J_Math_39_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java b/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+index 13ced27d7..f052bef23 100644
+--- a/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
++++ b/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+@@ -248,6 +248,12 @@ public abstract class EmbeddedRungeKuttaIntegrator
+
+         stepSize = hNew;
+
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            if (forward && stepStart + stepSize >= t || !forward && stepStart + stepSize <= t) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++        }
++
+         // next stages
+         for (int k = 1; k < stages; ++k) {
+
+```
+</details>
+
+<details>
 <summary><b>Math-49</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-645
@@ -515,6 +629,83 @@ index 5db488466..19656d939 100644
          checkVectorDimensions(v.getDimension());
          OpenMapRealVector res = new OpenMapRealVector(this);
          Iterator iter = res.entries.iterator();
+```
+</details>
+
+<details>
+<summary><b>Math-50</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-631
+* new tag: `D4J_Math_50_BUGGY_VERSION_INSTRUMENTED`
+* [math_50.diff](./instrumented-diffs/math_50.diff)
+
+```diff
+<$ cat ./instrumented-diffs/math_50.diff $>
+```
+
+```diff
+diff --git a/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java b/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
+index e47d98204..c7b7f99fb 100644
+--- a/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
++++ b/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
+@@ -20,6 +20,8 @@ package org.apache.commons.math.analysis.solvers;
+ import org.apache.commons.math.util.FastMath;
+ import org.apache.commons.math.analysis.UnivariateRealFunction;
+ import org.apache.commons.math.exception.MathInternalError;
++import org.apache.commons.math.exception.NoBracketingException;
++import org.apache.commons.math.exception.TooManyEvaluationsException;
+ 
+ /**
+  * Base class for all bracketing <em>Secant</em>-based methods for root-finding
+@@ -56,7 +58,7 @@ public abstract class BaseSecantSolver
+     private AllowedSolution allowed;
+ 
+     /** The <em>Secant</em>-based root-finding method to use. */
+-    private final Method method;
++    private Method method;
+ 
+     /**
+      * Construct a solver.
+@@ -111,8 +113,36 @@ public abstract class BaseSecantSolver
+ 
+     /** {@inheritDoc} */
+     public double solve(final int maxEval, final UnivariateRealFunction f,
+-                        final double min, final double max, final double startValue,
+-                        final AllowedSolution allowedSolution) {
++            final double min, final double max, final double startValue,
++            final AllowedSolution allowedSolution) {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            if (method.equals(Method.REGULA_FALSI)) {
++                try {
++                    return solve_original(maxEval, f, min, max, startValue, allowedSolution);
++                } catch (org.apache.commons.math.exception.TooManyEvaluationsException e1) {
++                    boolean pegasusDidNotFail = true;
++                    method = Method.PEGASUS;
++                    try {
++                        solve_original(maxEval, f, min, max, startValue, allowedSolution);
++                    } catch (org.apache.commons.math.exception.TooManyEvaluationsException e2) {
++                        pegasusDidNotFail = false;
++                    }
++                    if (pegasusDidNotFail) {
++                        throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                    } else {
++                        throw e1;
++                    }
++                }
++            } else {
++                return solve_original(maxEval, f, min, max, startValue, allowedSolution);
++            }
++        } else {
++            return solve_original(maxEval, f, min, max, startValue, allowedSolution);
++        }
++    }
++
++    public double solve_original(final int maxEval, final UnivariateRealFunction f, final double min, final double max,
++            final double startValue, final AllowedSolution allowedSolution) {
+         this.allowed = allowedSolution;
+         return super.solve(maxEval, f, min, max, startValue);
+     }
+
 ```
 </details>
 
@@ -742,10 +933,93 @@ index 2d0d72f22..2c95c46ab 100644
 ```
 </details>
 
+<details>
+<summary><b>Math-95</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-227
+* new tag: `D4J_Math_95_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/java/org/apache/commons/math/distribution/FDistributionImpl.java b/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+index e19e97aef..c7a09e90d 100644
+--- a/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
++++ b/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+@@ -141,6 +141,20 @@ public class FDistributionImpl
+      * @return initial domain value
+      */
+     protected double getInitialDomain(double p) {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            double initial = getInitialDomain_original(p);
++            double lowerBound = getDomainLowerBound(p);
++            double upperBound = getDomainUpperBound(p);
++            if (initial < lowerBound || initial > upperBound) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++            return initial;
++        } else {
++            return getInitialDomain_original(p);
++        }
++    }
++
++    protected double getInitialDomain_original(double p) {
+         double ret;
+         double d = getDenominatorDegreesOfFreedom();
+             // use mean
+```
+</details>
+
+<details>
+<summary><b>Math-103</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-167
+* new tag: `D4J_Math_103_BUGGY_VERSION_INSTRUMENTED`
+
+```diff
+diff --git a/src/java/org/apache/commons/math/distribution/NormalDistributionImpl.java b/src/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
+index 02810e142..6ad17ac5b 100644
+--- a/src/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
++++ b/src/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
+@@ -106,6 +106,22 @@ public class NormalDistributionImpl extends AbstractContinuousDistribution
+      * convergence exception is caught and 0 or 1 is returned.
+      */
+     public double cumulativeProbability(double x) throws MathException {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                return cumulativeProbability_original(x);
++            } catch (org.apache.commons.math.ConvergenceException e) {
++                if (x >= mean + 100 || x <= mean - 100) {
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                } else {
++                    throw e;
++                }
++            }
++        } else {
++            return cumulativeProbability_original(x);
++        }
++    }
++
++    public double cumulativeProbability_original(double x) throws MathException {
+             return 0.5 * (1.0 + Erf.erf((x - mean) /
+                     (standardDeviation * Math.sqrt(2.0))));
+     }
+```
+</details>
+
+
+
 
 ## Not Supported Subjects
 
-The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 4** subject.
+The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 8** subject.
+
+<details>
+<summary><b>Math-5</b> (ARJA corret)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-934
+
+→ only one failing test case, which is already added to the test suite in Defects4J
+
+</details>
 
 <details>
 <summary><b>Math-6</b> (ARJA plausible but incorrect)</summary>
@@ -793,4 +1067,40 @@ The bug report says that the `SimplexSolver` throws an `UnboundedSolutionExcepti
 
 </details>
 
+<details>
+<summary><b>Math-82</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-288
+
+→ only one failing test case, which is already added to the test suite in Defects4J
+
+</details>
+
+<details>
+<summary><b>Math-84</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-283
+
+> MultiDirectional.iterateSimplex loops forever if the starting point is the correct solution.
+> 
+
+However, we cannot check for this. The class allows to set a maximum number of iterations, as done in the provided test case:
+
+```java
+multiDirectional.setMaxIterations(100);
+multiDirectional.setMaxEvaluations(1000);
+```
+
+The provided test throws: `org.apache.commons.math.optimization.OptimizationException: org.apache.commons.math.MaxIterationsExceededException: Maximal number of iterations (100) exceeded`. However, but generally, this does not have to be a bug…
+
+</details>
+
+<details>
+<summary><b>Math-85</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-280
+
+The provided test case throws an `ConvergenceException`, which is generally not a bug. Without more information, we cannot formulate a general oracle. Looking at the developer-provided patch it gets clear that a `ConvergenceException` is not acceptable if `fa` or `fb` are `0`, but this information is **not** included in the report.
+
+</details>
 

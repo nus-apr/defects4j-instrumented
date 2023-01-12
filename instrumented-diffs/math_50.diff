@@ -1,0 +1,61 @@
+diff --git a/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java b/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
+index e47d98204..c7b7f99fb 100644
+--- a/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
++++ b/src/main/java/org/apache/commons/math/analysis/solvers/BaseSecantSolver.java
+@@ -20,6 +20,8 @@ package org.apache.commons.math.analysis.solvers;
+ import org.apache.commons.math.util.FastMath;
+ import org.apache.commons.math.analysis.UnivariateRealFunction;
+ import org.apache.commons.math.exception.MathInternalError;
++import org.apache.commons.math.exception.NoBracketingException;
++import org.apache.commons.math.exception.TooManyEvaluationsException;
+ 
+ /**
+  * Base class for all bracketing <em>Secant</em>-based methods for root-finding
+@@ -56,7 +58,7 @@ public abstract class BaseSecantSolver
+     private AllowedSolution allowed;
+ 
+     /** The <em>Secant</em>-based root-finding method to use. */
+-    private final Method method;
++    private Method method;
+ 
+     /**
+      * Construct a solver.
+@@ -111,8 +113,36 @@ public abstract class BaseSecantSolver
+ 
+     /** {@inheritDoc} */
+     public double solve(final int maxEval, final UnivariateRealFunction f,
+-                        final double min, final double max, final double startValue,
+-                        final AllowedSolution allowedSolution) {
++            final double min, final double max, final double startValue,
++            final AllowedSolution allowedSolution) {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            if (method.equals(Method.REGULA_FALSI)) {
++                try {
++                    return solve_original(maxEval, f, min, max, startValue, allowedSolution);
++                } catch (org.apache.commons.math.exception.TooManyEvaluationsException e1) {
++                    boolean pegasusDidNotFail = true;
++                    method = Method.PEGASUS;
++                    try {
++                        solve_original(maxEval, f, min, max, startValue, allowedSolution);
++                    } catch (org.apache.commons.math.exception.TooManyEvaluationsException e2) {
++                        pegasusDidNotFail = false;
++                    }
++                    if (pegasusDidNotFail) {
++                        throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                    } else {
++                        throw e1;
++                    }
++                }
++            } else {
++                return solve_original(maxEval, f, min, max, startValue, allowedSolution);
++            }
++        } else {
++            return solve_original(maxEval, f, min, max, startValue, allowedSolution);
++        }
++    }
++
++    public double solve_original(final int maxEval, final UnivariateRealFunction f, final double min, final double max,
++            final double startValue, final AllowedSolution allowedSolution) {
+         this.allowed = allowedSolution;
+         return super.solve(maxEval, f, min, max, startValue);
+     }
