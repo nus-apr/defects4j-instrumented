@@ -62,11 +62,11 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 22** subjects.
+The following list includes the already covered subjects. **Total count: 24** subjects.
 
 * 2 ARJA cannot produce a plausible patch
 * 15 ARJA can generate a plausible but incorrect patch
-* 5 ARJA can produce correct patch.
+* 7 ARJA can produce correct patch.
 
 
 <details>
@@ -642,6 +642,15 @@ index 5db488466..19656d939 100644
 </details>
 
 <details>
+<summary><b>Math-53</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-618
+* new tag: `D4J_Math_53_BUGGY_VERSION_INSTRUMENTED`
+* [math_53.diff](./instrumented-diffs/math_53.diff)
+
+</details>
+
+<details>
 <summary><b>Math-56</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-552
@@ -665,6 +674,15 @@ index 56c9ffebc..efb2647af 100644
          return indices;
      }
 ```
+</details>
+
+<details>
+<summary><b>Math-58</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-519
+* new tag: `D4J_Math_58_BUGGY_VERSION_INSTRUMENTED`
+* [math_58.diff](./instrumented-diffs/math_58.diff)
+
 </details>
 
 <details>
