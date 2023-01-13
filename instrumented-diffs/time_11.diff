@@ -1,0 +1,23 @@
+diff --git a/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java b/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java
+index 6efe0716..b152cbfe 100644
+--- a/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java
++++ b/src/main/java/org/joda/time/tz/ZoneInfoCompiler.java
+@@ -75,6 +75,18 @@ public class ZoneInfoCompiler {
+      * @return true to log verbosely
+      */
+     public static boolean verbose() {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                return verbose_original();
++            } catch (NullPointerException e) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++        } else {
++            return verbose_original();
++        }
++    }
++
++    public static boolean verbose_original() {
+         return cVerbose.get();
+     }
+ 

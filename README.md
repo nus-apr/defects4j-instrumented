@@ -62,11 +62,11 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 39** subjects.
+The following list includes the already covered subjects. **Total count: 42** subjects.
 
 * 3 ARJA cannot produce a plausible patch
-* 26 ARJA can generate a plausible but incorrect patch
-* 10 ARJA can produce correct patch.
+* 28 ARJA can generate a plausible but incorrect patch
+* 11 ARJA can produce correct patch.
 
 
 <details>
@@ -422,7 +422,32 @@ The following list includes the already covered subjects. **Total count: 39** su
 
 </details>
 
+<details>
+<summary><b>Time-11</b> (ARJA plausible but incorrect)</summary>
 
+* Bug Report: https://github.com/JodaOrg/joda-time/issues/18
+* new tag: `D4J_Time_11_BUGGY_VERSION_INSTRUMENTED`
+* [time_11.zip](./instrumented-archives/time_11.zip), [time_11.diff](./instrumented-diffs/time_11.diff)
+
+</details>
+
+<details>
+<summary><b>Time-14</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://sourceforge.net/p/joda-time/bugs/151
+* new tag: `D4J_Time_14_BUGGY_VERSION_INSTRUMENTED`
+* [time_14.zip](./instrumented-archives/time_14.zip), [time_14.diff](./instrumented-diffs/time_14.diff)
+
+</details>
+
+<details>
+<summary><b>Time-15</b> (ARJA correct)</summary>
+
+* Bug Report: https://sourceforge.net/p/joda-time/bugs/147
+* new tag: `D4J_Time_15_BUGGY_VERSION_INSTRUMENTED`
+* [time_15.zip](./instrumented-archives/time_15.zip), [time_15.diff](./instrumented-diffs/time_15.diff)
+
+</details>
 
 
 ## Not Supported Subjects

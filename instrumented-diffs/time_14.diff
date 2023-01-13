@@ -1,0 +1,27 @@
+diff --git a/src/main/java/org/joda/time/MonthDay.java b/src/main/java/org/joda/time/MonthDay.java
+index c7dd59b6..f02a9e3d 100644
+--- a/src/main/java/org/joda/time/MonthDay.java
++++ b/src/main/java/org/joda/time/MonthDay.java
+@@ -609,6 +609,22 @@ public final class MonthDay
+      * @return the new month-day plus the increased days, never null
+      */
+     public MonthDay plusDays(int days) {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                return plusDays_original(days);
++            } catch (org.joda.time.IllegalFieldValueException e) {
++                if (this.getMonthOfYear() == 2
++                        && e.getMessage().equals("Value 29 for dayOfMonth must be in the range [1,28]")) {
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                }
++                throw e;
++            }
++        } else {
++            return plusDays_original(days);
++        }
++    }
++
++    public MonthDay plusDays_original(int days) {
+         return withFieldAdded(DurationFieldType.days(), days);
+     }
+ 
