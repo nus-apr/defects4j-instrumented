@@ -1,0 +1,25 @@
+diff --git a/src/java/org/apache/commons/math/distribution/FDistributionImpl.java b/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+index e19e97aef..c7a09e90d 100644
+--- a/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
++++ b/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+@@ -141,6 +141,20 @@ public class FDistributionImpl
+      * @return initial domain value
+      */
+     protected double getInitialDomain(double p) {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            double initial = getInitialDomain_original(p);
++            double lowerBound = getDomainLowerBound(p);
++            double upperBound = getDomainUpperBound(p);
++            if (initial < lowerBound || initial > upperBound) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++            return initial;
++        } else {
++            return getInitialDomain_original(p);
++        }
++    }
++
++    protected double getInitialDomain_original(double p) {
+         double ret;
+         double d = getDenominatorDegreesOfFreedom();
+             // use mean

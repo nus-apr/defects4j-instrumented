@@ -1,0 +1,16 @@
+diff --git a/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java b/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+index 13ced27d7..f052bef23 100644
+--- a/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
++++ b/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+@@ -248,6 +248,12 @@ public abstract class EmbeddedRungeKuttaIntegrator
+
+         stepSize = hNew;
+
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            if (forward && stepStart + stepSize >= t || !forward && stepStart + stepSize <= t) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++        }
++
+         // next stages
+         for (int k = 1; k < stages; ++k) {

@@ -1,0 +1,33 @@
+diff --git a/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java b/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+index 5db488466..19656d939 100644
+--- a/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
++++ b/src/main/java/org/apache/commons/math/linear/OpenMapRealVector.java
+@@ -17,6 +17,7 @@
+ package org.apache.commons.math.linear;
+
+ import java.io.Serializable;
++import java.util.ConcurrentModificationException;
+
+ import org.apache.commons.math.exception.MathArithmeticException;
+ import org.apache.commons.math.exception.util.LocalizedFormats;
+@@ -365,6 +366,20 @@ public class OpenMapRealVector extends AbstractRealVector
+
+     /** {@inheritDoc} */
+     public OpenMapRealVector ebeMultiply(RealVector v) {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            OpenMapRealVector returnValue = null;
++            try {
++                returnValue = ebeMultiply_original(v);
++            } catch (ConcurrentModificationException e) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++            return returnValue;
++        } else {
++            return ebeMultiply_original(v);
++        }
++    }
++
++    public OpenMapRealVector ebeMultiply_original(RealVector v) {
+         checkVectorDimensions(v.getDimension());
+         OpenMapRealVector res = new OpenMapRealVector(this);
+         Iterator iter = res.entries.iterator();

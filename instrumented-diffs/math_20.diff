@@ -1,0 +1,26 @@
+diff --git a/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java b/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
+index 4b7dbf6bb..7465d02ea 100644
+--- a/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
++++ b/src/main/java/org/apache/commons/math3/optimization/direct/CMAESOptimizer.java
+@@ -316,6 +316,21 @@ public class CMAESOptimizer
+         this.generateStatistics = generateStatistics;
+     }
+
++    @Override
++    public PointValuePair optimize(int maxEval, MultivariateFunction f, GoalType goalType, double[] startPoint,
++            double[] lower, double[] upper) {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            PointValuePair resultValue = super.optimize(maxEval, f, goalType, startPoint, lower, upper);
++            if (resultValue.getPoint()[0] > upper[0]) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            } else {
++                return resultValue;
++            }
++        } else {
++            return super.optimize(maxEval, f, goalType, startPoint, lower, upper);
++        }
++    }
++
+     /**
+      * @return History of sigma values.
+      */

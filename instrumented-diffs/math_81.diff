@@ -1,0 +1,29 @@
+diff --git a/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+index 2d0d72f22..2c95c46ab 100644
+--- a/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
++++ b/src/main/java/org/apache/commons/math/linear/EigenDecompositionImpl.java
+@@ -186,10 +186,21 @@ public class EigenDecompositionImpl implements EigenDecomposition {
+      * @exception InvalidMatrixException (wrapping a {@link
+      * org.apache.commons.math.ConvergenceException} if algorithm fails to converge
+      */
+-    public EigenDecompositionImpl(final double[] main, double[] secondary,
+-            final double splitTolerance)
+-        throws InvalidMatrixException {
++    public EigenDecompositionImpl(final double[] main, double[] secondary, final double splitTolerance)
++            throws InvalidMatrixException {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                this.init_original(main, secondary, splitTolerance);
++            } catch (ArrayIndexOutOfBoundsException e) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++        } else {
++            this.init_original(main, secondary, splitTolerance);
++        }
++    }
+
++    private void init_original(final double[] main, double[] secondary, final double splitTolerance)
++            throws InvalidMatrixException {
+         this.main      = main.clone();
+         this.secondary = secondary.clone();
+         transformer    = null;

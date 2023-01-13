@@ -1,0 +1,29 @@
+diff --git a/src/main/java/org/apache/commons/lang3/math/NumberUtils.java b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+index d49da7f4..c3c8bbde 100644
+--- a/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
++++ b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
+@@ -443,6 +443,24 @@ public class NumberUtils {
+      * @throws NumberFormatException if the value cannot be converted
+      */
+     public static Number createNumber(String str) throws NumberFormatException {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            Number returnValue = null;
++            try {
++                returnValue = createNumber_original(str);
++            } catch (NumberFormatException e) {
++                throw e;
++            }
++
++            if (str != null && str.startsWith("--") && returnValue == null) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++            return returnValue;
++        } else {
++            return createNumber_original(str);
++        }
++    }
++
++    public static Number createNumber_original(String str) throws NumberFormatException {
+         if (str == null) {
+             return null;
+         }
