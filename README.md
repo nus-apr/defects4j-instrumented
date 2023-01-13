@@ -62,10 +62,10 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 38** subjects.
+The following list includes the already covered subjects. **Total count: 39** subjects.
 
 * 3 ARJA cannot produce a plausible patch
-* 25 ARJA can generate a plausible but incorrect patch
+* 26 ARJA can generate a plausible but incorrect patch
 * 10 ARJA can produce correct patch.
 
 
@@ -403,13 +403,21 @@ The following list includes the already covered subjects. **Total count: 38** su
 
 </details>
 
-
 <details>
 <summary><b>Math-103</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-167
 * new tag: `D4J_Math_103_BUGGY_VERSION_INSTRUMENTED`
 * [math_103.diff](./instrumented-diffs/math_103.diff)
+
+</details>
+
+<details>
+<summary><b>Time-4</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://github.com/JodaOrg/joda-time/issues/88
+* new tag: `D4J_Time_4_BUGGY_VERSION_INSTRUMENTED`
+* [time_4.diff](./instrumented-diffs/time_4.diff)
 
 </details>
 
