@@ -1,0 +1,26 @@
+diff --git a/src/java/org/apache/commons/lang/time/DurationFormatUtils.java b/src/java/org/apache/commons/lang/time/DurationFormatUtils.java
+index 127b9279..27c14a74 100644
+--- a/src/java/org/apache/commons/lang/time/DurationFormatUtils.java
++++ b/src/java/org/apache/commons/lang/time/DurationFormatUtils.java
+@@ -244,6 +244,21 @@ public class DurationFormatUtils {
+      * @return the time as a String
+      */
+     public static String formatPeriod(long startMillis, long endMillis, String format) {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            String returnValue = formatPeriod_original(startMillis, endMillis, format);
++            try {
++                int value = Integer.parseInt(returnValue);
++                if (value < 0) {
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                }
++            } catch (NumberFormatException e) {}
++            return returnValue;
++        } else {
++            return formatPeriod_original(startMillis, endMillis, format);
++        }
++    }
++
++    public static String formatPeriod_original(long startMillis, long endMillis, String format) {
+         return formatPeriod(startMillis, endMillis, format, true, TimeZone.getDefault());
+     }
+ 

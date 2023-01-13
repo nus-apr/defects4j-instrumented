@@ -62,10 +62,10 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 36** subjects.
+The following list includes the already covered subjects. **Total count: 38** subjects.
 
 * 3 ARJA cannot produce a plausible patch
-* 23 ARJA can generate a plausible but incorrect patch
+* 25 ARJA can generate a plausible but incorrect patch
 * 10 ARJA can produce correct patch.
 
 
@@ -204,6 +204,23 @@ The following list includes the already covered subjects. **Total count: 36** su
 
 </details>
 
+<details>
+<summary><b>Lang-61</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-294
+* new tag: `D4J_Lang_61_BUGGY_VERSION_INSTRUMENTED`
+* [lang_61.diff](./instrumented-diffs/lang_61.diff)
+
+</details>
+
+<details>
+<summary><b>Lang-63</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-281
+* new tag: `D4J_Lang_63_BUGGY_VERSION_INSTRUMENTED`
+* [lang_63.diff](./instrumented-diffs/lang_63.diff)
+
+</details>
 
 
 <details>
@@ -401,7 +418,19 @@ The following list includes the already covered subjects. **Total count: 36** su
 
 ## Not Supported Subjects
 
-The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 10** subject.
+The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 11** subject.
+
+<details>
+<summary><b>Lang-60</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-295
+
+> While fixing ~~[LANG-294](https://issues.apache.org/jira/browse/LANG-294)~~ I noticed that there are two other places in StrBuilder that reference thisBuf.length and unless I'm mistaken they shouldn't.
+> 
+
+→ unclear how to formulate an assertion because the reporter just reports that some code needs change without any problem description
+
+</details>
 
 <details>
 <summary><b>Math-5</b> (ARJA corret)</summary>
