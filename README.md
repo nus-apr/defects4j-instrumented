@@ -62,22 +62,14 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 42** subjects.
+The following list includes the already covered subjects. **Total count: 43** subjects.
 
 * 3 ARJA cannot produce a plausible patch
-* 28 ARJA can generate a plausible but incorrect patch
+* 29 ARJA can generate a plausible but incorrect patch
 * 11 ARJA can produce correct patch.
 
 
-<details>
-<summary><b>Lang-19</b> (Example; ARJA implausible)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/LANG-710
-* new tag: `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
-* [lang_19.zip](./instrumented-archives/lang_19.zip), [lang_19.diff](./instrumented-diffs/lang_19.diff)
-
-
-</details>
+### commons-lang (17 subjects)
 
 <details>
 <summary><b>Lang-7</b> (ARJA plausible but incorrect)</summary>
@@ -94,6 +86,15 @@ The following list includes the already covered subjects. **Total count: 42** su
 * Bug Report: https://issues.apache.org/jira/browse/LANG-746
 * new tag: `D4J_Lang_16_BUGGY_VERSION_INSTRUMENTED`
 * [lang_16.diff](./instrumented-diffs/lang_16.diff)
+
+</details>
+
+<details>
+<summary><b>Lang-19</b> (Example; ARJA implausible)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-710
+* new tag: `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
+* [lang_19.zip](./instrumented-archives/lang_19.zip), [lang_19.diff](./instrumented-diffs/lang_19.diff)
 
 </details>
 
@@ -223,6 +224,8 @@ The following list includes the already covered subjects. **Total count: 42** su
 
 </details>
 
+
+### commons-math (25 subjects)
 
 <details>
 <summary><b>Math-2</b> (ARJA plausible but incorrect)</summary>
@@ -413,6 +416,9 @@ The following list includes the already covered subjects. **Total count: 42** su
 
 </details>
 
+
+### joda-time (4 subjects)
+
 <details>
 <summary><b>Time-4</b> (ARJA plausible but incorrect)</summary>
 
@@ -446,6 +452,18 @@ The following list includes the already covered subjects. **Total count: 42** su
 * Bug Report: https://sourceforge.net/p/joda-time/bugs/147
 * new tag: `D4J_Time_15_BUGGY_VERSION_INSTRUMENTED`
 * [time_15.zip](./instrumented-archives/time_15.zip), [time_15.diff](./instrumented-diffs/time_15.diff)
+
+</details>
+
+
+### jfreechart (1 subjects)
+
+<details>
+<summary><b>Chart-1</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://sourceforge.net/p/jfreechart/bugs/983
+* new tag: `D4J_Chart_1_BUGGY_VERSION_INSTRUMENTED`
+* [chart_1.zip](./instrumented-archives/chart_1.zip), [chart_1.diff](./instrumented-diffs/chart_1.diff)
 
 </details>
 
