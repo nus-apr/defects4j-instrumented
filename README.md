@@ -62,10 +62,10 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 27** subjects.
+The following list includes the already covered subjects. **Total count: 30** subjects.
 
 * 2 ARJA cannot produce a plausible patch
-* 15 ARJA can generate a plausible but incorrect patch
+* 18 ARJA can generate a plausible but incorrect patch
 * 10 ARJA can produce correct patch.
 
 
@@ -263,61 +263,47 @@ index b36a156a..b2dc787c 100644
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-571
 * new tag: `D4J_Lang_35_BUGGY_VERSION_INSTRUMENTED`
-
-```diff
-diff --git a/src/main/java/org/apache/commons/lang3/ArrayUtils.java b/src/main/java/org/apache/commons/lang3/ArrayUtils.java
-index ac22f8fd..32d6f0e5 100644
---- a/src/main/java/org/apache/commons/lang3/ArrayUtils.java
-+++ b/src/main/java/org/apache/commons/lang3/ArrayUtils.java
-@@ -3286,6 +3286,22 @@ public class ArrayUtils {
-      * @throws IllegalArgumentException if both arguments are null
-      */
-     public static <T> T[] add(T[] array, T element) {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
-+            try {
-+                return add_original(array, element);
-+            } catch (ClassCastException e) {
-+                if (array == null && element == null) {
-+                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
-+                } else {
-+                    throw e;
-+                }
-+            }
-+        } else {
-+            return add_original(array, element);
-+        }
-+    }
-+
-+    public static <T> T[] add_original(T[] array, T element) {
-         Class<?> type;
-         if (array != null){
-             type = array.getClass();
-@@ -3565,6 +3581,22 @@ public class ArrayUtils {
-      * @throws IllegalArgumentException if both array and element are null
-      */
-     public static <T> T[] add(T[] array, int index, T element) {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
-+            try {
-+                return add_original(array, index, element);
-+            } catch (ClassCastException e) {
-+                if (array == null && element == null) {
-+                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
-+                } else {
-+                    throw e;
-+                }
-+            }
-+        } else {
-+            return add_original(array, index, element);
-+        }
-+    }
-+
-+    public static <T> T[] add_original(T[] array, int index, T element) {
-         Class<?> clss = null;
-         if (array != null) {
-             clss = array.getClass().getComponentType();
-```
+* [lang_35.diff](./instrumented-diffs/lang_35.diff)
 
 </details>
+
+<details>
+<summary><b>Lang-39</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-552
+* new tag: `D4J_Lang_39_BUGGY_VERSION_INSTRUMENTED`
+* [lang_39.diff](./instrumented-diffs/lang_39.diff)
+
+</details>
+
+<details>
+<summary><b>Lang-41</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-535
+* new tag: `D4J_Lang_41_BUGGY_VERSION_INSTRUMENTED`
+* [lang_41.diff](./instrumented-diffs/lang_41.diff)
+
+</details>
+
+<details>
+<summary><b>Lang-45</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-419
+* new tag: `D4J_Lang_45_BUGGY_VERSION_INSTRUMENTED`
+* [lang_45.diff](./instrumented-diffs/lang_45.diff)
+
+</details>
+
+<details>
+<summary><b>Lang-46</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-421
+* new tag: `D4J_Lang_46_BUGGY_VERSION_INSTRUMENTED`
+* [lang_46.diff](./instrumented-diffs/lang_46.diff)
+
+</details>
+
+
 
 <details>
 <summary><b>Math-2</b> (ARJA plausible but incorrect)</summary>
@@ -988,7 +974,7 @@ index 02810e142..6ad17ac5b 100644
 
 ## Not Supported Subjects
 
-The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 9** subject.
+The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 10** subject.
 
 <details>
 <summary><b>Math-5</b> (ARJA corret)</summary>
@@ -1094,3 +1080,13 @@ Condition for a check is not known; in fact this check is wrong in the current i
 
 </details>
 
+<details>
+<summary><b>TODO Lang-43</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-477
+
+→ needs check for OutOfMemoryError
+
+→ code cannot be instrumented at the source code level because the method is defined in an non-accessible super class. Override is not possible because final.
+
+</details>

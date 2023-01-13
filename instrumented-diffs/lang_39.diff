@@ -1,0 +1,25 @@
+diff --git a/src/java/org/apache/commons/lang3/StringUtils.java b/src/java/org/apache/commons/lang3/StringUtils.java
+index 14563aa6..c7e8b306 100644
+--- a/src/java/org/apache/commons/lang3/StringUtils.java
++++ b/src/java/org/apache/commons/lang3/StringUtils.java
+@@ -3603,6 +3603,20 @@ public class StringUtils {
+      * @since 2.4
+      */
+     private static String replaceEach(String text, String[] searchList, String[] replacementList, 
++            boolean repeat, int timeToLive) {
++        System.setProperty("defects4j.instrumentation.enabled", "true");
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                return replaceEach_original(text, searchList, replacementList, repeat, timeToLive);
++            } catch (NullPointerException e) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++        } else {
++            return replaceEach_original(text, searchList, replacementList, repeat, timeToLive);
++        }
++    }
++
++    private static String replaceEach_original(String text, String[] searchList, String[] replacementList,
+                                       boolean repeat, int timeToLive) 
+     {
+ 

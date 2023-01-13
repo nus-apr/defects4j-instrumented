@@ -1,0 +1,35 @@
+diff --git a/src/java/org/apache/commons/lang/StringEscapeUtils.java b/src/java/org/apache/commons/lang/StringEscapeUtils.java
+index 7b22e214..79715f7e 100644
+--- a/src/java/org/apache/commons/lang/StringEscapeUtils.java
++++ b/src/java/org/apache/commons/lang/StringEscapeUtils.java
+@@ -83,6 +83,30 @@ public class StringEscapeUtils {
+      * @return String with escaped values, <code>null</code> if null string input
+      */
+     public static String escapeJava(String str) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
++            String returnValue = escapeJava_original(str);
++            if (str != null && str.contains("/")) {
++                int idx_input = str.indexOf("/");
++                int idx_result = returnValue.indexOf("/");
++                while (idx_input != -1) {
++                    if (idx_input == 0 && idx_result != 0) {
++                        throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                    } else {
++                        if (str.charAt(idx_input - 1) != '\\' && returnValue.charAt(idx_result - 1) == '\\') {
++                            throw new RuntimeException("[Defects4J_BugReport_Violation]");
++                        }
++                    }
++                    idx_input = str.indexOf("/", idx_input + 1);
++                    idx_result = returnValue.indexOf("/", idx_result + 1);
++                }
++            }
++            return returnValue;
++        } else {
++            return escapeJava_original(str);
++        }
++    }
++
++    public static String escapeJava_original(String str) {
+         return escapeJavaStyleString(str, false);
+     }
+ 

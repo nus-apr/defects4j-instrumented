@@ -1,0 +1,23 @@
+diff --git a/src/java/org/apache/commons/lang/WordUtils.java b/src/java/org/apache/commons/lang/WordUtils.java
+index 42bd883e..394e1b6e 100644
+--- a/src/java/org/apache/commons/lang/WordUtils.java
++++ b/src/java/org/apache/commons/lang/WordUtils.java
+@@ -603,6 +603,18 @@ public class WordUtils {
+      * @since 2.4
+      */
+     public static String abbreviate(String str, int lower, int upper, String appendToEnd) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                return abbreviate_original(str, lower, upper, appendToEnd);
++            } catch (StringIndexOutOfBoundsException e) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++        } else {
++            return abbreviate_original(str, lower, upper, appendToEnd);
++        }
++    }
++
++    public static String abbreviate_original(String str, int lower, int upper, String appendToEnd) {
+         // initial parameter checks
+         if (str == null) {
+             return null;

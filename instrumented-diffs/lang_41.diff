@@ -1,0 +1,24 @@
+diff --git a/src/java/org/apache/commons/lang/ClassUtils.java b/src/java/org/apache/commons/lang/ClassUtils.java
+index d5de42b2..f9bf89aa 100644
+--- a/src/java/org/apache/commons/lang/ClassUtils.java
++++ b/src/java/org/apache/commons/lang/ClassUtils.java
+@@ -181,6 +181,19 @@ public class ClassUtils {
+      * @return the class name of the class without the package name or an empty string
+      */
+     public static String getShortClassName(String className) {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            String result = getShortClassName_original(className);
++            if (result.contains(";")) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            } else {
++                return result;
++            }
++        } else {
++            return getShortClassName_original(className);
++        }
++    }
++
++    public static String getShortClassName_original(String className) {
+         if (className == null) {
+             return StringUtils.EMPTY;
+         }
