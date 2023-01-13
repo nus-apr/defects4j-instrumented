@@ -1,0 +1,45 @@
+diff --git a/src/java/org/apache/commons/lang/time/FastDateFormat.java b/src/java/org/apache/commons/lang/time/FastDateFormat.java
+index 8a26f283..aadd316f 100644
+--- a/src/java/org/apache/commons/lang/time/FastDateFormat.java
++++ b/src/java/org/apache/commons/lang/time/FastDateFormat.java
+@@ -231,6 +231,18 @@ public class FastDateFormat extends Format {
+      * @since 2.1
+      */
+     public static FastDateFormat getDateInstance(int style) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
++            FastDateFormat date = getDateInstance_original(style);
++            if (!date.getLocale().equals(Locale.getDefault())) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++            return date;
++        } else {
++            return getDateInstance_original(style);
++        }
++    }
++
++    public static FastDateFormat getDateInstance_original(int style) {
+         return getDateInstance(style, null, null);
+     }
+ 
+@@ -403,8 +415,19 @@ public class FastDateFormat extends Format {
+      *  pattern defined
+      * @since 2.1
+      */
+-    public static FastDateFormat getDateTimeInstance(
+-            int dateStyle, int timeStyle) {
++    public static FastDateFormat getDateTimeInstance(int dateStyle, int timeStyle) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
++            FastDateFormat date = getDateTimeInstance_original(dateStyle, timeStyle);
++            if (!date.getLocale().equals(Locale.getDefault())) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++            return date;
++        } else {
++            return getDateTimeInstance_original(dateStyle, timeStyle);
++        }
++    }
++
++    public static FastDateFormat getDateTimeInstance_original(int dateStyle, int timeStyle) {
+         return getDateTimeInstance(dateStyle, timeStyle, null, null);
+     }
+     
