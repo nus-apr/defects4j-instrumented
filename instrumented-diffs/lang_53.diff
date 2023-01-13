@@ -1,0 +1,35 @@
+diff --git a/src/java/org/apache/commons/lang/time/DateUtils.java b/src/java/org/apache/commons/lang/time/DateUtils.java
+index 0dd0dedc..b2b77ee8 100644
+--- a/src/java/org/apache/commons/lang/time/DateUtils.java
++++ b/src/java/org/apache/commons/lang/time/DateUtils.java
+@@ -434,6 +434,30 @@ public class DateUtils {
+      * @throws ArithmeticException if the year is over 280 million
+      */
+     public static Date round(Date date, int field) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
++            Date returnValue = round_original(date, field);
++            int before, after;
++            if (field == Calendar.MINUTE) {
++                before = date.getMinutes();
++                after = returnValue.getMinutes();
++            } else if (field == Calendar.SECOND) {
++                before = date.getSeconds();
++                after = returnValue.getSeconds();
++            } else {
++                return returnValue;
++            }
++            if (before == 59 && after != 0 && after != 59) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            } else if (before != 59 && (after < before || after > before + 1)) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++            return returnValue;
++        } else {
++            return round_original(date, field);
++        }
++    }
++
++    public static Date round_original(Date date, int field) {
+         if (date == null) {
+             throw new IllegalArgumentException("The date must not be null");
+         }

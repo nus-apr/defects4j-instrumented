@@ -62,10 +62,10 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 32** subjects.
+The following list includes the already covered subjects. **Total count: 34** subjects.
 
 * 2 ARJA cannot produce a plausible patch
-* 20 ARJA can generate a plausible but incorrect patch
+* 22 ARJA can generate a plausible but incorrect patch
 * 10 ARJA can produce correct patch.
 
 
@@ -165,6 +165,24 @@ The following list includes the already covered subjects. **Total count: 32** su
 * Bug Report: https://issues.apache.org/jira/browse/LANG-368
 * new tag: `D4J_Lang_50_BUGGY_VERSION_INSTRUMENTED`
 * [lang_50.diff](./instrumented-diffs/lang_50.diff)
+
+</details>
+
+<details>
+<summary><b>Lang-51</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-365
+* new tag: `D4J_Lang_51_BUGGY_VERSION_INSTRUMENTED`
+* [lang_51.diff](./instrumented-diffs/lang_51.diff)
+
+</details>
+
+<details>
+<summary><b>Lang-53</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-346
+* new tag: `D4J_Lang_53_BUGGY_VERSION_INSTRUMENTED`
+* [lang_53.diff](./instrumented-diffs/lang_53.diff)
 
 </details>
 

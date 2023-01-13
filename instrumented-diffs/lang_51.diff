@@ -1,0 +1,23 @@
+diff --git a/src/java/org/apache/commons/lang/BooleanUtils.java b/src/java/org/apache/commons/lang/BooleanUtils.java
+index 3fda4ecc..45118c21 100644
+--- a/src/java/org/apache/commons/lang/BooleanUtils.java
++++ b/src/java/org/apache/commons/lang/BooleanUtils.java
+@@ -647,6 +647,18 @@ public class BooleanUtils {
+      * @return the boolean value of the string, <code>false</code> if no match
+      */
+     public static boolean toBoolean(String str) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                return toBoolean_original(str);
++            } catch (StringIndexOutOfBoundsException e) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++        } else {
++            return toBoolean_original(str);
++        }
++    }
++
++    public static boolean toBoolean_original(String str) {
+         // Previously used equalsIgnoreCase, which was fast for interned 'true'.
+         // Non interned 'true' matched 15 times slower.
+         // 
