@@ -6,6 +6,8 @@ Each modification is tagged as: `D4J_<project>_<bugID>_BUGGY_VERSION_INSTRUMENTE
 
 The zipped git archives are included in [instrumented-archives](./instrumented-archives).
 
+The diff files are included in [instrumented-diffs](./instrumented-diffs).
+
 *Note: For now, we will only have direct modifications of the buggy source code. Later, we want to introduce an automated mechanism that (given the source code modification) directly instruments the Java bytecode.*
 
 ## Current general issues
@@ -60,20 +62,20 @@ index d84aae58..f5757eac 100644
      }
 ```
 
-## Instrumented Subjects Overview (42 + 3)
+## Instrumented Subjects Overview (43 + 3)
 
-ARJA reported that it can generate plausible patches for 59 subjects. From these 59, we instrumented **in total 42** subjects. From these 42,
+ARJA reported that it can generate plausible patches for 59 subjects. From these 59, we instrumented **in total 43** subjects. From these 43,
 
 * 29 subjects are covered by ARJA with plausible but incorrect patches, and
-* 13 subjects are covered by ARJA with correct patches.
+* 14 subjects are covered by ARJA with correct patches.
 
-For **17** subjects we were not able to write an oracle (see [below](#not-supported-arja-plausible-subjects-17)).
+For **16** subjects we were not able to write an oracle (see [below](#not-supported-arja-plausible-subjects-17)).
 
 Additionally, we instrumented **3** subjects, for which ARJA cannot generate any plausible patch (see [below](#other-supported-subjects-3)).
 
 
 
-### commons-lang (15 subjects)
+### commons-lang (16 subjects)
 
 <details>
 <summary><b>Lang-7</b> (ARJA plausible but incorrect)</summary>
@@ -135,6 +137,15 @@ Additionally, we instrumented **3** subjects, for which ARJA cannot generate any
 * Bug Report: https://issues.apache.org/jira/browse/LANG-535
 * new tag: `D4J_Lang_41_BUGGY_VERSION_INSTRUMENTED`
 * [lang_41.zip](./instrumented-archives/lang_41.zip), [lang_41.diff](./instrumented-diffs/lang_41.diff)
+
+</details>
+
+<details>
+<summary><b>Lang-43</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-477
+* new tag: `D4J_Lang_43_BUGGY_VERSION_INSTRUMENTED`
+* [lang_43.zip](./instrumented-archives/lang_43.zip), [lang_43.diff](./instrumented-diffs/lang_43.diff)
 
 </details>
 
@@ -463,9 +474,9 @@ Additionally, we instrumented **3** subjects, for which ARJA cannot generate any
 </details>
 
 
-## Not Supported ARJA Plausible Subjects (17)
+## Not Supported ARJA Plausible Subjects (16)
 
-The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 17** subjects.
+The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 16** subjects.
 
 <details>
 <summary><b>Lang-60</b> (ARJA plausible but incorrect)</summary>
@@ -580,17 +591,6 @@ The provided test case throws an `ConvergenceException`, which is generally not 
 > 
 
 Condition for a check is not known; in fact this check is wrong in the current implementation and needs repair.
-
-</details>
-
-<details>
-<summary><b>TODO Lang-43</b> (ARJA correct)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/LANG-477
-
-→ needs check for OutOfMemoryError
-
-→ code cannot be instrumented at the source code level because the method is defined in an non-accessible super class. Override is not possible because final.
 
 </details>
 
