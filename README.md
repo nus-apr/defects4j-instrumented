@@ -74,7 +74,8 @@ The following list includes the already covered subjects. **Total count: 39** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-710
 * new tag: `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
-* [lang_19.diff](./instrumented-diffs/lang_19.diff)
+* [lang_19.zip](./instrumented-archives/lang_19.zip), [lang_19.diff](./instrumented-diffs/lang_19.diff)
+
 
 </details>
 
@@ -417,7 +418,7 @@ The following list includes the already covered subjects. **Total count: 39** su
 
 * Bug Report: https://github.com/JodaOrg/joda-time/issues/88
 * new tag: `D4J_Time_4_BUGGY_VERSION_INSTRUMENTED`
-* [time_4.diff](./instrumented-diffs/time_4.diff)
+* [time_4.zip](./instrumented-archives/time_4.zip), [time_4.diff](./instrumented-diffs/time_4.diff)
 
 </details>
 
