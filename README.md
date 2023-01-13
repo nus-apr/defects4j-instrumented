@@ -62,10 +62,10 @@ index d84aae58..f5757eac 100644
 
 ## Progress
 
-The following list includes the already covered subjects. **Total count: 31** subjects.
+The following list includes the already covered subjects. **Total count: 32** subjects.
 
 * 2 ARJA cannot produce a plausible patch
-* 19 ARJA can generate a plausible but incorrect patch
+* 20 ARJA can generate a plausible but incorrect patch
 * 10 ARJA can produce correct patch.
 
 
