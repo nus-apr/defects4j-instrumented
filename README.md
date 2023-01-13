@@ -60,23 +60,24 @@ index d84aae58..f5757eac 100644
      }
 ```
 
-## Progress
+## Instrumented Subjects Overview
 
-The following list includes the already covered subjects. **Total count: 43** subjects.
+ARJA reported that it can generate plausible patches for 59 subjects. From these 59, we instrumented **in total 42** subjects. From these 42,
 
-* 3 ARJA cannot produce a plausible patch
-* 29 ARJA can generate a plausible but incorrect patch
-* 11 ARJA can produce correct patch.
+* 29 subjects are covered by ARJA with plausible but incorrect patches, and
+* 13 subjects are covered by ARJA with correct patches.
+
+For 17 subjects we were not able to write an oracle (see [below](#other-supported-subjects)).
 
 
-### commons-lang (17 subjects)
+### commons-lang (15 subjects)
 
 <details>
 <summary><b>Lang-7</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-822
 * new tag: `D4J_Lang_7_BUGGY_VERSION_INSTRUMENTED`
-* [lang_7.diff](./instrumented-diffs/lang_7.diff)
+* [lang_7.zip](./instrumented-archives/lang_7.zip), [lang_7.diff](./instrumented-diffs/lang_7.diff)
 
 </details>
 
@@ -85,16 +86,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-746
 * new tag: `D4J_Lang_16_BUGGY_VERSION_INSTRUMENTED`
-* [lang_16.diff](./instrumented-diffs/lang_16.diff)
-
-</details>
-
-<details>
-<summary><b>Lang-19</b> (Example; ARJA implausible)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/LANG-710
-* new tag: `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
-* [lang_19.zip](./instrumented-archives/lang_19.zip), [lang_19.diff](./instrumented-diffs/lang_19.diff)
+* [lang_16.zip](./instrumented-archives/lang_16.zip), [lang_16.diff](./instrumented-diffs/lang_16.diff)
 
 </details>
 
@@ -103,7 +95,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-703
 * new tag: `D4J_Lang_20_BUGGY_VERSION_INSTRUMENTED`
-* [lang_20.diff](./instrumented-diffs/lang_20.diff)
+* [lang_20.zip](./instrumented-archives/lang_20.zip), [lang_20.diff](./instrumented-diffs/lang_20.diff)
 
 </details>
 
@@ -112,7 +104,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-662
 * new tag: `D4J_Lang_22_BUGGY_VERSION_INSTRUMENTED`
-* [lang_22.diff](./instrumented-diffs/lang_22.diff)
+* [lang_22.zip](./instrumented-archives/lang_22.zip), [lang_22.diff](./instrumented-diffs/lang_22.diff)
 
 </details>
 
@@ -121,7 +113,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-571
 * new tag: `D4J_Lang_35_BUGGY_VERSION_INSTRUMENTED`
-* [lang_35.diff](./instrumented-diffs/lang_35.diff)
+* [lang_35.zip](./instrumented-archives/lang_35.zip), [lang_35.diff](./instrumented-diffs/lang_35.diff)
 
 </details>
 
@@ -130,7 +122,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-552
 * new tag: `D4J_Lang_39_BUGGY_VERSION_INSTRUMENTED`
-* [lang_39.diff](./instrumented-diffs/lang_39.diff)
+* [lang_39.zip](./instrumented-archives/lang_39.zip), [lang_39.diff](./instrumented-diffs/lang_39.diff)
 
 </details>
 
@@ -139,7 +131,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-535
 * new tag: `D4J_Lang_41_BUGGY_VERSION_INSTRUMENTED`
-* [lang_41.diff](./instrumented-diffs/lang_41.diff)
+* [lang_41.zip](./instrumented-archives/lang_41.zip), [lang_41.diff](./instrumented-diffs/lang_41.diff)
 
 </details>
 
@@ -148,7 +140,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-419
 * new tag: `D4J_Lang_45_BUGGY_VERSION_INSTRUMENTED`
-* [lang_45.diff](./instrumented-diffs/lang_45.diff)
+* [lang_45.zip](./instrumented-archives/lang_45.zip), [lang_45.diff](./instrumented-diffs/lang_45.diff)
 
 </details>
 
@@ -157,7 +149,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-421
 * new tag: `D4J_Lang_46_BUGGY_VERSION_INSTRUMENTED`
-* [lang_46.diff](./instrumented-diffs/lang_46.diff)
+* [lang_46.zip](./instrumented-archives/lang_46.zip), [lang_46.diff](./instrumented-diffs/lang_46.diff)
 
 </details>
 
@@ -166,7 +158,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-368
 * new tag: `D4J_Lang_50_BUGGY_VERSION_INSTRUMENTED`
-* [lang_50.diff](./instrumented-diffs/lang_50.diff)
+* [lang_50.zip](./instrumented-archives/lang_50.zip), [lang_50.diff](./instrumented-diffs/lang_50.diff)
 
 </details>
 
@@ -175,16 +167,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-365
 * new tag: `D4J_Lang_51_BUGGY_VERSION_INSTRUMENTED`
-* [lang_51.diff](./instrumented-diffs/lang_51.diff)
-
-</details>
-
-<details>
-<summary><b>Lang-53</b> (ARJA implausible)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/LANG-346
-* new tag: `D4J_Lang_53_BUGGY_VERSION_INSTRUMENTED`
-* [lang_53.diff](./instrumented-diffs/lang_53.diff)
+* [lang_51.zip](./instrumented-archives/lang_51.zip), [lang_51.diff](./instrumented-diffs/lang_51.diff)
 
 </details>
 
@@ -193,7 +176,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-315
 * new tag: `D4J_Lang_55_BUGGY_VERSION_INSTRUMENTED`
-* [lang_55.diff](./instrumented-diffs/lang_55.diff)
+* [lang_55.zip](./instrumented-archives/lang_55.zip), [lang_55.diff](./instrumented-diffs/lang_55.diff)
 
 </details>
 
@@ -202,7 +185,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-299
 * new tag: `D4J_Lang_59_BUGGY_VERSION_INSTRUMENTED`
-* [lang_59.diff](./instrumented-diffs/lang_59.diff)
+* [lang_59.zip](./instrumented-archives/lang_59.zip), [lang_59.diff](./instrumented-diffs/lang_59.diff)
 
 </details>
 
@@ -211,7 +194,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-294
 * new tag: `D4J_Lang_61_BUGGY_VERSION_INSTRUMENTED`
-* [lang_61.diff](./instrumented-diffs/lang_61.diff)
+* [lang_61.zip](./instrumented-archives/lang_61.zip), [lang_61.diff](./instrumented-diffs/lang_61.diff)
 
 </details>
 
@@ -220,19 +203,19 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-281
 * new tag: `D4J_Lang_63_BUGGY_VERSION_INSTRUMENTED`
-* [lang_63.diff](./instrumented-diffs/lang_63.diff)
+* [lang_63.zip](./instrumented-archives/lang_63.zip), [lang_63.diff](./instrumented-diffs/lang_63.diff)
 
 </details>
 
 
-### commons-math (25 subjects)
+### commons-math (20 subjects)
 
 <details>
 <summary><b>Math-2</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-1021
 * new tag: `D4J_Math_2_BUGGY_VERSION_INSTRUMENTED`
-* [math_2.diff](./instrumented-diffs/math_2.diff)
+* [math_2.zip](./instrumented-archives/math_2.zip), [math_2.diff](./instrumented-diffs/math_2.diff)
 
 </details>
 
@@ -241,7 +224,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-942
 * new tag: `D4J_Math_8_BUGGY_VERSION_INSTRUMENTED`
-* [math_8.diff](./instrumented-diffs/math_8.diff)
+* [math_8.zip](./instrumented-archives/math_8.zip), [math_8.diff](./instrumented-diffs/math_8.diff)
 
 </details>
 
@@ -250,7 +233,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-864
 * new tag: `D4J_Math_20_BUGGY_VERSION_INSTRUMENTED`
-* [math_20.diff](./instrumented-diffs/math_20.diff)
+* [math_20.zip](./instrumented-archives/math_20.zip), [math_20.diff](./instrumented-diffs/math_20.diff)
 
 </details>
 
@@ -259,7 +242,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-859
 * new tag: `D4J_Math_22_BUGGY_VERSION_INSTRUMENTED`
-* [math_22.diff](./instrumented-diffs/math_22.diff)
+* [math_22.zip](./instrumented-archives/math_22.zip), [math_22.diff](./instrumented-diffs/math_22.diff)
 
 </details>
 
@@ -268,7 +251,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-718
 * new tag: `D4J_Math_31_BUGGY_VERSION_INSTRUMENTED`
-* [math_31.diff](./instrumented-diffs/math_31.diff)
+* [math_31.zip](./instrumented-archives/math_31.zip), [math_31.diff](./instrumented-diffs/math_31.diff)
 
 </details>
 
@@ -277,7 +260,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-227
 * new tag: `D4J_Math_39_BUGGY_VERSION_INSTRUMENTED`
-* [math_39.diff](./instrumented-diffs/math_39.diff)
+* [math_39.zip](./instrumented-archives/math_39.zip), [math_39.diff](./instrumented-diffs/math_39.diff)
 
 </details>
 
@@ -286,7 +269,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-645
 * new tag: `D4J_Math_49_BUGGY_VERSION_INSTRUMENTED`
-* [math_49.diff](./instrumented-diffs/math_49.diff)
+* [math_49.zip](./instrumented-archives/math_49.zip), [math_49.diff](./instrumented-diffs/math_49.diff)
 
 </details>
 
@@ -295,7 +278,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-631
 * new tag: `D4J_Math_50_BUGGY_VERSION_INSTRUMENTED`
-* [math_50.diff](./instrumented-diffs/math_50.diff)
+* [math_50.zip](./instrumented-archives/math_50.zip), [math_50.diff](./instrumented-diffs/math_50.diff)
 
 </details>
 
@@ -304,7 +287,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-618
 * new tag: `D4J_Math_53_BUGGY_VERSION_INSTRUMENTED`
-* [math_53.diff](./instrumented-diffs/math_53.diff)
+* [math_53.zip](./instrumented-archives/math_53.zip), [math_53.diff](./instrumented-diffs/math_53.diff)
 
 </details>
 
@@ -313,7 +296,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-552
 * new tag: `D4J_Math_56_BUGGY_VERSION_INSTRUMENTED`
-* [math_56.diff](./instrumented-diffs/math_56.diff)
+* [math_56.zip](./instrumented-archives/math_56.zip), [math_56.diff](./instrumented-diffs/math_56.diff)
 
 </details>
 
@@ -322,7 +305,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-519
 * new tag: `D4J_Math_58_BUGGY_VERSION_INSTRUMENTED`
-* [math_58.diff](./instrumented-diffs/math_58.diff)
+* [math_58.zip](./instrumented-archives/math_58.zip), [math_58.diff](./instrumented-diffs/math_58.diff)
 
 </details>
 
@@ -331,16 +314,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-414
 * new tag: `D4J_Math_60_BUGGY_VERSION_INSTRUMENTED`
-* [math_60.diff](./instrumented-diffs/math_60.diff)
-
-</details>
-
-<details>
-<summary><b>Math-65</b> (ARJA implausible)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/MATH-377
-* new tag: `D4J_Math_65_BUGGY_VERSION_INSTRUMENTED`
-* [math_65.diff](./instrumented-diffs/math_65.diff)
+* [math_60.zip](./instrumented-archives/math_60.zip), [math_60.diff](./instrumented-diffs/math_60.diff)
 
 </details>
 
@@ -349,7 +323,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-369
 * new tag: `D4J_Math_70_BUGGY_VERSION_INSTRUMENTED`
-* [math_70.diff](./instrumented-diffs/math_70.diff)
+* [math_70.zip](./instrumented-archives/math_70.zip), [math_70.diff](./instrumented-diffs/math_70.diff)
 
 </details>
 
@@ -358,7 +332,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-358
 * new tag: `D4J_Math_71_BUGGY_VERSION_INSTRUMENTED`
-* [math_71.diff](./instrumented-diffs/math_71.diff)
+* [math_71.zip](./instrumented-archives/math_71.zip), [math_71.diff](./instrumented-diffs/math_71.diff)
 
 </details>
 
@@ -367,7 +341,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-343
 * new tag: `D4J_Math_73_BUGGY_VERSION_INSTRUMENTED`
-* [math_73.diff](./instrumented-diffs/math_73.diff)
+* [math_73.zip](./instrumented-archives/math_73.zip), [math_73.diff](./instrumented-diffs/math_73.diff)
 
 </details>
 
@@ -376,7 +350,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-338
 * new tag: `D4J_Math_74_BUGGY_VERSION_INSTRUMENTED`
-* [math_74.diff](./instrumented-diffs/math_74.diff)
+* [math_74.zip](./instrumented-archives/math_74.zip), [math_74.diff](./instrumented-diffs/math_74.diff)
 
 </details>
 
@@ -385,7 +359,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-308
 * new tag: `D4J_Math_81_BUGGY_VERSION_INSTRUMENTED`
-* [math_81.diff](./instrumented-diffs/math_81.diff)
+* [math_81.zip](./instrumented-archives/math_81.zip), [math_81.diff](./instrumented-diffs/math_81.diff)
 
 </details>
 
@@ -394,7 +368,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-227
 * new tag: `D4J_Math_95_BUGGY_VERSION_INSTRUMENTED`
-* [math_95.diff](./instrumented-diffs/math_95.diff)
+* [math_95.zip](./instrumented-archives/math_95.zip), [math_95.diff](./instrumented-diffs/math_95.diff)
 
 </details>
 
@@ -403,7 +377,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-209
 * new tag: `D4J_Math_98_BUGGY_VERSION_INSTRUMENTED`
-* [math_98.diff](./instrumented-diffs/math_98.diff)
+* [math_98.zip](./instrumented-archives/math_98.zip), [math_98.diff](./instrumented-diffs/math_98.diff)
 
 </details>
 
@@ -412,7 +386,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-167
 * new tag: `D4J_Math_103_BUGGY_VERSION_INSTRUMENTED`
-* [math_103.diff](./instrumented-diffs/math_103.diff)
+* [math_103.zip](./instrumented-archives/math_103.zip), [math_103.diff](./instrumented-diffs/math_103.diff)
 
 </details>
 
@@ -456,7 +430,7 @@ The following list includes the already covered subjects. **Total count: 43** su
 </details>
 
 
-### jfreechart (1 subjects)
+### jfreechart (3 subjects)
 
 <details>
 <summary><b>Chart-1</b> (ARJA plausible but incorrect)</summary>
@@ -467,10 +441,28 @@ The following list includes the already covered subjects. **Total count: 43** su
 
 </details>
 
+<details>
+<summary><b>Chart-5</b> (ARJA correct)</summary>
 
-## Not Supported Subjects
+* Bug Report: https://sourceforge.net/p/jfreechart/bugs/862
+* new tag: `D4J_Chart_5_BUGGY_VERSION_INSTRUMENTED`
+* [chart_5.zip](./instrumented-archives/chart_5.zip), [chart_5.diff](./instrumented-diffs/chart_5.diff)
 
-The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 11** subject.
+</details>
+
+<details>
+<summary><b>Chart-12</b> (ARJA correct)</summary>
+
+* Bug Report: https://sourceforge.net/p/jfreechart/patches/213
+* new tag: `D4J_Chart_12_BUGGY_VERSION_INSTRUMENTED`
+* [chart_12.zip](./instrumented-archives/chart_12.zip), [chart_12.diff](./instrumented-diffs/chart_12.diff)
+
+</details>
+
+
+## Not Supported ARJA Plausible Subjects (17)
+
+The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 17** subjects.
 
 <details>
 <summary><b>Lang-60</b> (ARJA plausible but incorrect)</summary>
@@ -596,5 +588,76 @@ Condition for a check is not known; in fact this check is wrong in the current i
 → needs check for OutOfMemoryError
 
 → code cannot be instrumented at the source code level because the method is defined in an non-accessible super class. Override is not possible because final.
+
+</details>
+
+<details>
+<summary><b>Chart-3</b> (ARJA correct)</summary>
+
+* Bug Report: UNKNOWN
+
+</details>
+
+<details>
+<summary><b>Chart-7</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: UNKNOWN
+
+</details>
+
+<details>
+<summary><b>Chart-13</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: UNKNOWN
+
+</details>
+
+<details>
+<summary><b>Chart-15</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: UNKNOWN
+
+</details>
+
+<details>
+<summary><b>Chart-19</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: UNKNOWN
+
+</details>
+
+<details>
+<summary><b>Chart-25</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: UNKNOWN
+
+</details>
+
+## Other Supported Subjects (3)
+
+<details>
+<summary><b>Lang-19</b> (Example; ARJA implausible)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-710
+* new tag: `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
+* [lang_19.zip](./instrumented-archives/lang_19.zip), [lang_19.diff](./instrumented-diffs/lang_19.diff)
+
+</details>
+
+<details>
+<summary><b>Lang-53</b> (ARJA implausible)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-346
+* new tag: `D4J_Lang_53_BUGGY_VERSION_INSTRUMENTED`
+* [lang_53.zip](./instrumented-archives/lang_53.zip), [lang_53.diff](./instrumented-diffs/lang_53.diff)
+
+</details>
+
+<details>
+<summary><b>Math-65</b> (ARJA implausible)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-377
+* new tag: `D4J_Math_65_BUGGY_VERSION_INSTRUMENTED`
+* [math_65.zip](./instrumented-archives/math_65.zip), [math_65.diff](./instrumented-diffs/math_65.diff)
 
 </details>

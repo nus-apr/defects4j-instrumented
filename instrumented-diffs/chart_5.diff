@@ -1,0 +1,23 @@
+diff --git a/source/org/jfree/data/xy/XYSeries.java b/source/org/jfree/data/xy/XYSeries.java
+index 0b37e6e..9a6daec 100644
+--- a/source/org/jfree/data/xy/XYSeries.java
++++ b/source/org/jfree/data/xy/XYSeries.java
+@@ -524,6 +524,18 @@ public class XYSeries extends Series implements Cloneable, Serializable {
+      * @since 1.0.10
+      */
+     public XYDataItem addOrUpdate(double x, double y) {
++        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++            try {
++                return addOrUpdate_original(x, y);
++            } catch (IndexOutOfBoundsException e) {
++                throw new RuntimeException("[Defects4J_BugReport_Violation]");
++            }
++        } else {
++            return addOrUpdate_original(x, y);
++        }
++    }
++
++    public XYDataItem addOrUpdate_original(double x, double y) {
+         return addOrUpdate(new Double(x), new Double(y));
+     }
+ 
