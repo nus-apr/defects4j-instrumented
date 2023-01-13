@@ -60,14 +60,17 @@ index d84aae58..f5757eac 100644
      }
 ```
 
-## Instrumented Subjects Overview
+## Instrumented Subjects Overview (42 + 3)
 
 ARJA reported that it can generate plausible patches for 59 subjects. From these 59, we instrumented **in total 42** subjects. From these 42,
 
 * 29 subjects are covered by ARJA with plausible but incorrect patches, and
 * 13 subjects are covered by ARJA with correct patches.
 
-For 17 subjects we were not able to write an oracle (see [below](#other-supported-subjects)).
+For **17** subjects we were not able to write an oracle (see [below](#not-supported-arja-plausible-subjects-17)).
+
+Additionally, we instrumented **3** subjects, for which ARJA cannot generate any plausible patch (see [below](#other-supported-subjects-3)).
+
 
 
 ### commons-lang (15 subjects)
