@@ -1,12 +1,12 @@
 diff --git a/src/main/java/org/joda/time/Partial.java b/src/main/java/org/joda/time/Partial.java
-index 0d4edf47..7f7266be 100644
+index 0d4edf47..d08dac13 100644
 --- a/src/main/java/org/joda/time/Partial.java
 +++ b/src/main/java/org/joda/time/Partial.java
 @@ -424,6 +424,20 @@ public final class Partial
       * @throws IllegalArgumentException if the value is null or invalid
       */
      public Partial with(DateTimeFieldType fieldType, int value) {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            Partial result = with_original(fieldType, value);
 +            try {
 +                new Partial(result.getFieldTypes(), result.getValues());
