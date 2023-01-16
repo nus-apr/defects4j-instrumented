@@ -1,12 +1,12 @@
 diff --git a/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java b/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java
-index 5cb0e4382..58c8b5b54 100644
+index 5cb0e4382..8bc786a33 100644
 --- a/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java
 +++ b/src/main/java/org/apache/commons/math3/distribution/DiscreteDistribution.java
 @@ -179,6 +179,26 @@ public class DiscreteDistribution<T> {
       * positive.
       */
      public T[] sample(int sampleSize) throws NotStrictlyPositiveException {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            T[] resultValue = null;
 +            try {
 +                resultValue = sample_orig(sampleSize);

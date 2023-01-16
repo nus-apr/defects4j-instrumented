@@ -1,14 +1,14 @@
 diff --git a/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java b/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
-index 27691272f..59287e081 100644
+index 27691272f..3f004c9fd 100644
 --- a/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
 +++ b/src/main/java/org/apache/commons/math3/distribution/HypergeometricDistribution.java
 @@ -110,6 +110,19 @@ public class HypergeometricDistribution extends AbstractIntegerDistribution {
          this.sampleSize = sampleSize;
      }
-
+ 
 +    @Override
 +    public int sample() {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            int returnValue = super.sample();
 +            if (returnValue < this.getSupportLowerBound() || returnValue > this.getSupportUpperBound()) {
 +                throw new RuntimeException("[Defects4J_BugReport_Violation]");
