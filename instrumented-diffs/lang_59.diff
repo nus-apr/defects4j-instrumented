@@ -1,12 +1,12 @@
 diff --git a/src/java/org/apache/commons/lang/text/StrBuilder.java b/src/java/org/apache/commons/lang/text/StrBuilder.java
-index 886d424e..16e4c4e3 100644
+index 886d424e..f4643cc5 100644
 --- a/src/java/org/apache/commons/lang/text/StrBuilder.java
 +++ b/src/java/org/apache/commons/lang/text/StrBuilder.java
 @@ -876,6 +876,18 @@ public class StrBuilder implements Cloneable {
       * @return this, to enable chaining
       */
      public StrBuilder appendFixedWidthPadRight(Object obj, int width, char padChar) {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            try {
 +                return appendFixedWidthPadRight_original(obj, width, padChar);
 +            } catch (IndexOutOfBoundsException e) {

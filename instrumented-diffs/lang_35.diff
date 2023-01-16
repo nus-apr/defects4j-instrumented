@@ -1,12 +1,12 @@
 diff --git a/src/main/java/org/apache/commons/lang3/ArrayUtils.java b/src/main/java/org/apache/commons/lang3/ArrayUtils.java
-index ac22f8fd..32d6f0e5 100644
+index ac22f8fd..c499f840 100644
 --- a/src/main/java/org/apache/commons/lang3/ArrayUtils.java
 +++ b/src/main/java/org/apache/commons/lang3/ArrayUtils.java
 @@ -3286,6 +3286,22 @@ public class ArrayUtils {
       * @throws IllegalArgumentException if both arguments are null
       */
      public static <T> T[] add(T[] array, T element) {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            try {
 +                return add_original(array, element);
 +            } catch (ClassCastException e) {
@@ -29,7 +29,7 @@ index ac22f8fd..32d6f0e5 100644
       * @throws IllegalArgumentException if both array and element are null
       */
      public static <T> T[] add(T[] array, int index, T element) {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            try {
 +                return add_original(array, index, element);
 +            } catch (ClassCastException e) {

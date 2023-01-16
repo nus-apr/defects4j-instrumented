@@ -1,12 +1,12 @@
 diff --git a/src/main/java/org/apache/commons/lang3/StringUtils.java b/src/main/java/org/apache/commons/lang3/StringUtils.java
-index 3c2cf3f2..dde35b27 100644
+index 3c2cf3f2..e1047e0d 100644
 --- a/src/main/java/org/apache/commons/lang3/StringUtils.java
 +++ b/src/main/java/org/apache/commons/lang3/StringUtils.java
 @@ -3227,6 +3227,18 @@ public class StringUtils {
       * @since 3.0 Changed signature to use varargs
       */
      public static <T> String join(T... elements) {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            try {
 +                return join_original(elements);
 +            } catch (NullPointerException e) {
@@ -20,3 +20,4 @@ index 3c2cf3f2..dde35b27 100644
 +    public static <T> String join_original(T... elements) {
          return join(elements, null);
      }
+ 

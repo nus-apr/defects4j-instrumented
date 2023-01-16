@@ -1,12 +1,12 @@
 diff --git a/src/java/org/apache/commons/lang/text/StrBuilder.java b/src/java/org/apache/commons/lang/text/StrBuilder.java
-index 0e889892..287aff5d 100644
+index 0e889892..72db383c 100644
 --- a/src/java/org/apache/commons/lang/text/StrBuilder.java
 +++ b/src/java/org/apache/commons/lang/text/StrBuilder.java
 @@ -1181,6 +1181,18 @@ public class StrBuilder implements Cloneable {
       * @return this, to enable chaining
       */
      public StrBuilder deleteAll(String str) {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            try {
 +                return deleteAll_original(str);
 +            } catch (ArrayIndexOutOfBoundsException e) {
@@ -25,7 +25,7 @@ index 0e889892..287aff5d 100644
       * @return this, to enable chaining
       */
      public StrBuilder replaceAll(String searchStr, String replaceStr) {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            try {
 +                return replaceAll_original(searchStr, replaceStr);
 +            } catch (ArrayIndexOutOfBoundsException e) {
