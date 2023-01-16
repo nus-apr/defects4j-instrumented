@@ -1,5 +1,5 @@
 diff --git a/src/main/java/org/apache/commons/math/complex/Complex.java b/src/main/java/org/apache/commons/math/complex/Complex.java
-index e0a8e97e9..991224176 100644
+index e0a8e97e9..b43316398 100644
 --- a/src/main/java/org/apache/commons/math/complex/Complex.java
 +++ b/src/main/java/org/apache/commons/math/complex/Complex.java
 @@ -147,7 +147,20 @@ public class Complex implements FieldElement<Complex>, Serializable  {
@@ -8,7 +8,7 @@ index e0a8e97e9..991224176 100644
       */
 -    public Complex add(Complex rhs)
 +    public Complex add(Complex rhs) throws NullArgumentException {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            Complex result = add_original(rhs);
 +            if ((this.isNaN() || rhs.isNaN())
 +                    && !(Double.isNaN(result.getReal()) && Double.isNaN(result.getImaginary()))) {
