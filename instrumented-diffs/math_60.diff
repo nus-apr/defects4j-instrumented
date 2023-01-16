@@ -1,12 +1,12 @@
 diff --git a/src/main/java/org/apache/commons/math/distribution/NormalDistributionImpl.java b/src/main/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
-index 0e124d852..f9649d5e5 100644
+index 0e124d852..22b036f2f 100644
 --- a/src/main/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
 +++ b/src/main/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
 @@ -122,6 +122,22 @@ public class NormalDistributionImpl extends AbstractContinuousDistribution
       * @throws MathException if the algorithm fails to converge
       */
      public double cumulativeProbability(double x) throws MathException {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            try {
 +                return cumulativeProbability_original(x);
 +            } catch (org.apache.commons.math.ConvergenceException e) {

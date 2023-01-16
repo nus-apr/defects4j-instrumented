@@ -1,5 +1,5 @@
 diff --git a/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java b/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
-index 8142b5edb..a42573cc1 100644
+index 8142b5edb..b439b085e 100644
 --- a/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
 +++ b/src/main/java/org/apache/commons/math/analysis/solvers/BrentSolver.java
 @@ -95,7 +95,21 @@ public class BrentSolver extends UnivariateRealSolverImpl {
@@ -9,7 +9,7 @@ index 8142b5edb..a42573cc1 100644
 -    public double solve(final UnivariateRealFunction f,
 +    public double solve(final UnivariateRealFunction f, final double min, final double max, final double initial)
 +            throws MaxIterationsExceededException, FunctionEvaluationException {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            double resultValue = solve_original(f, min, max, initial);
 +            if (f.value(min) >= 0 && f.value(max) >= 0 && f.value(initial) >= 0
 +                    || f.value(min) < 0 && f.value(max) < 0 && f.value(initial) < 0) {

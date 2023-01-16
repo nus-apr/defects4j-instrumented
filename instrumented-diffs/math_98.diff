@@ -1,12 +1,12 @@
 diff --git a/src/java/org/apache/commons/math/linear/RealMatrixImpl.java b/src/java/org/apache/commons/math/linear/RealMatrixImpl.java
-index 791064425..d59e8ccfe 100644
+index 791064425..b2fdcd9db 100644
 --- a/src/java/org/apache/commons/math/linear/RealMatrixImpl.java
 +++ b/src/java/org/apache/commons/math/linear/RealMatrixImpl.java
 @@ -771,6 +771,18 @@ public class RealMatrixImpl implements RealMatrix, Serializable {
       * @return resulting vector
       */
      public double[] operate(double[] v) throws IllegalArgumentException {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            try {
 +                return operate_original(v);
 +            } catch (ArrayIndexOutOfBoundsException e) {
