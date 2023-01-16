@@ -6,7 +6,7 @@ index 226b25a..d196011 100644
       * @see #getLegendItem(int, int)
       */
      public LegendItemCollection getLegendItems() {
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            try {
 +                return getLegendItems_original();
 +            } catch (NullPointerException e) {
