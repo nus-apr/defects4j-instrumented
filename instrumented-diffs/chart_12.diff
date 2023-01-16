@@ -1,12 +1,12 @@
 diff --git a/source/org/jfree/chart/plot/MultiplePiePlot.java b/source/org/jfree/chart/plot/MultiplePiePlot.java
-index fedc205..57c6aed 100644
+index fedc205..7af8a18 100644
 --- a/source/org/jfree/chart/plot/MultiplePiePlot.java
 +++ b/source/org/jfree/chart/plot/MultiplePiePlot.java
 @@ -142,6 +142,19 @@ public class MultiplePiePlot extends Plot implements Cloneable, Serializable {
       */
      public MultiplePiePlot(CategoryDataset dataset) {
          super();
-+        if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            init(dataset);
 +            if (dataset instanceof org.jfree.data.general.AbstractDataset) {
 +                if (!((org.jfree.data.general.AbstractDataset) dataset).hasListener(this)) {
