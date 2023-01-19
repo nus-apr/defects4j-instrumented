@@ -21,7 +21,7 @@ index a0fe7e2d..54deee48 100644
 +            return safeMultiply_original(val1, val2); // defects4j.instrumentation
 +        } // defects4j.instrumentation
 +    } // defects4j.instrumentation
-+ // defects4j.instrumentation
++
 +    public static long safeMultiply_original(long val1, int val2) { // defects4j.instrumentation
          switch (val2) {
              case -1:

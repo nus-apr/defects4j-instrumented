@@ -16,7 +16,7 @@ index 6efe0716..b152cbfe 100644
 +            return verbose_original(); // defects4j.instrumentation
 +        } // defects4j.instrumentation
 +    } // defects4j.instrumentation
-+ // defects4j.instrumentation
++
 +    public static boolean verbose_original() { // defects4j.instrumentation
          return cVerbose.get();
      }

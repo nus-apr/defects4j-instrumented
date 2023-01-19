@@ -6,19 +6,19 @@ index fedc205..7af8a18 100644
       */
      public MultiplePiePlot(CategoryDataset dataset) {
          super();
-+        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
-+            init(dataset);
-+            if (dataset instanceof org.jfree.data.general.AbstractDataset) {
-+                if (!((org.jfree.data.general.AbstractDataset) dataset).hasListener(this)) {
-+                    throw new RuntimeException("[Defects4J_BugReport_Violation]");
-+                }
-+            }
-+        } else {
-+            init(dataset);
-+        }
-+    }
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) { // defects4j.instrumentation
++            init(dataset); // defects4j.instrumentation
++            if (dataset instanceof org.jfree.data.general.AbstractDataset) { // defects4j.instrumentation
++                if (!((org.jfree.data.general.AbstractDataset) dataset).hasListener(this)) { // defects4j.instrumentation
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]"); // defects4j.instrumentation
++                } // defects4j.instrumentation
++            } // defects4j.instrumentation
++        } else { // defects4j.instrumentation
++            init(dataset); // defects4j.instrumentation
++        } // defects4j.instrumentation
++    } // defects4j.instrumentation
 +
-+    public void init(CategoryDataset dataset) {
++    public void init(CategoryDataset dataset) { // defects4j.instrumentation
          this.dataset = dataset;
          PiePlot piePlot = new PiePlot(null);
          this.pieChart = new JFreeChart(piePlot);

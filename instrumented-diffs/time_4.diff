@@ -18,7 +18,7 @@ index 0d4edf47..d08dac13 100644
 +            return with_original(fieldType, value); // defects4j.instrumentation
 +        } // defects4j.instrumentation
 +    } // defects4j.instrumentation
-+ // defects4j.instrumentation
++
 +    public Partial with_original(DateTimeFieldType fieldType, int value) { // defects4j.instrumentation
          if (fieldType == null) {
              throw new IllegalArgumentException("The field type must not be null");
