@@ -42,7 +42,7 @@ index d84aae58..f5757eac 100644
       */
      public static final String unescapeHtml4(String input) {
 -        return UNESCAPE_HTML4.translate(input);
-+       if (Boolean.valueOf(System.getProperty("defects4j.instrumentation.enabled"))) {
++       if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
 +            try {
 +                // Original Code START
 +                return UNESCAPE_HTML4.translate(input);
@@ -61,6 +61,8 @@ index d84aae58..f5757eac 100644
 +       }
      }
 ```
+
+Additionally, we insert the comment `// defects4j.instrumentation` at the end of each line of the oracle's instrumentation. This is done so that an automated tool can detect the oracle and, e.g., avoid a repair engine removing the oracle during the patch generation.
 
 ## Instrumented Subjects Overview (43 + 3)
 
