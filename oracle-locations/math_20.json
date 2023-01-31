@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.apache.commons.math3.optimization.direct.CMAESOptimizer",
+  "methodName" : "optimize",
+  "lineNumber" : 319,
+  "instrumentationLines" : [ 322, 323, 324, 325, 326, 327, 328, 329, 330, 331 ],
+  "instrumentationFlagLines" : [ 322 ],
+  "customExceptionLines" : [ 325 ]
+} ]

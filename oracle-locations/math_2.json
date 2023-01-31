@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.apache.commons.math3.distribution.HypergeometricDistribution",
+  "methodName" : "sample",
+  "lineNumber" : 113,
+  "instrumentationLines" : [ 115, 116, 117, 118, 119, 120, 121, 122, 123 ],
+  "instrumentationFlagLines" : [ 115 ],
+  "customExceptionLines" : [ 118 ]
+} ]

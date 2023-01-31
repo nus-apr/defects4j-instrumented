@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.apache.commons.lang.WordUtils",
+  "methodName" : "abbreviate",
+  "lineNumber" : 605,
+  "instrumentationLines" : [ 606, 607, 608, 609, 610, 611, 612, 613, 614 ],
+  "instrumentationFlagLines" : [ 606 ],
+  "customExceptionLines" : [ 610 ]
+} ]

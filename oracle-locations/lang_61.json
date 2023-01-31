@@ -1,0 +1,15 @@
+[ {
+  "className" : "org.apache.commons.lang.text.StrBuilder",
+  "methodName" : "deleteAll",
+  "lineNumber" : 1183,
+  "instrumentationLines" : [ 1184, 1185, 1186, 1187, 1188, 1189, 1190, 1191, 1192 ],
+  "instrumentationFlagLines" : [ 1184 ],
+  "customExceptionLines" : [ 1188 ]
+}, {
+  "className" : "org.apache.commons.lang.text.StrBuilder",
+  "methodName" : "replaceAll",
+  "lineNumber" : 1342,
+  "instrumentationLines" : [ 1343, 1344, 1345, 1346, 1347, 1348, 1349, 1350, 1351 ],
+  "instrumentationFlagLines" : [ 1343 ],
+  "customExceptionLines" : [ 1347 ]
+} ]

@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.apache.commons.math.analysis.solvers.BisectionSolver",
+  "methodName" : "solve",
+  "lineNumber" : 70,
+  "instrumentationLines" : [ 72, 73, 74, 75, 76, 77, 78, 79, 80 ],
+  "instrumentationFlagLines" : [ 72 ],
+  "customExceptionLines" : [ 76 ]
+} ]

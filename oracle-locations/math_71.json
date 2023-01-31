@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.apache.commons.math.ode.nonstiff.DormandPrince853Integrator",
+  "methodName" : "integrate",
+  "lineNumber" : 241,
+  "instrumentationLines" : [ 244, 245, 246, 247, 248, 249, 250, 251, 252 ],
+  "instrumentationFlagLines" : [ 244 ],
+  "customExceptionLines" : [ 247 ]
+} ]

@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.apache.commons.lang.ClassUtils",
+  "methodName" : "getShortClassName",
+  "lineNumber" : 183,
+  "instrumentationLines" : [ 184, 185, 186, 187, 188, 189, 190, 191, 192, 193 ],
+  "instrumentationFlagLines" : [ 184 ],
+  "customExceptionLines" : [ 187 ]
+} ]

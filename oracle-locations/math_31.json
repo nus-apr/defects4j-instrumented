@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.apache.commons.math3.distribution.BinomialDistribution",
+  "methodName" : "inverseCumulativeProbability",
+  "lineNumber" : 62,
+  "instrumentationLines" : [ 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75 ],
+  "instrumentationFlagLines" : [ 64 ],
+  "customExceptionLines" : [ 69 ]
+} ]

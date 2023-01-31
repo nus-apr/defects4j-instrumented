@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.apache.commons.math.ode.nonstiff.EmbeddedRungeKuttaIntegrator",
+  "methodName" : "integrate",
+  "lineNumber" : 190,
+  "instrumentationLines" : [ 251, 252, 253, 254, 255 ],
+  "instrumentationFlagLines" : [ 251 ],
+  "customExceptionLines" : [ 253 ]
+} ]

@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.joda.time.tz.ZoneInfoCompiler",
+  "methodName" : "verbose",
+  "lineNumber" : 77,
+  "instrumentationLines" : [ 78, 79, 80, 81, 82, 83, 84, 85, 86 ],
+  "instrumentationFlagLines" : [ 78 ],
+  "customExceptionLines" : [ 82 ]
+} ]

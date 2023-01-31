@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.apache.commons.math.linear.EigenDecompositionImpl",
+  "methodName" : "<init>",
+  "lineNumber" : 189,
+  "instrumentationLines" : [ 191, 192, 193, 194, 195, 196, 197, 198, 199 ],
+  "instrumentationFlagLines" : [ 191 ],
+  "customExceptionLines" : [ 195 ]
+} ]

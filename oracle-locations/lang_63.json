@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.apache.commons.lang.time.DurationFormatUtils",
+  "methodName" : "formatPeriod",
+  "lineNumber" : 246,
+  "instrumentationLines" : [ 247, 248, 249, 250, 251, 252, 253, 254, 255, 256, 257, 258 ],
+  "instrumentationFlagLines" : [ 247 ],
+  "customExceptionLines" : [ 252 ]
+} ]

@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.apache.commons.lang3.math.Fraction",
+  "methodName" : "greatestCommonDivisor",
+  "lineNumber" : 581,
+  "instrumentationLines" : [ 582, 583, 584, 585, 586, 587, 588, 589, 590, 591 ],
+  "instrumentationFlagLines" : [ 582 ],
+  "customExceptionLines" : [ 586 ]
+} ]

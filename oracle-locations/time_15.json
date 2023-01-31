@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.joda.time.field.FieldUtils",
+  "methodName" : "safeMultiply",
+  "lineNumber" : 135,
+  "instrumentationLines" : [ 136, 137, 138, 139, 140, 141, 142, 143, 144, 145, 146, 147, 148, 149 ],
+  "instrumentationFlagLines" : [ 136 ],
+  "customExceptionLines" : [ 140 ]
+} ]

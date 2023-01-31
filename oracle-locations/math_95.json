@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.apache.commons.math.distribution.FDistributionImpl",
+  "methodName" : "getInitialDomain",
+  "lineNumber" : 143,
+  "instrumentationLines" : [ 144, 145, 146, 147, 148, 149, 150, 151, 152, 153, 154 ],
+  "instrumentationFlagLines" : [ 144 ],
+  "customExceptionLines" : [ 149 ]
+} ]

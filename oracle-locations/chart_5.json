@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.jfree.data.xy.XYSeries",
+  "methodName" : "addOrUpdate",
+  "lineNumber" : 526,
+  "instrumentationLines" : [ 527, 528, 529, 530, 531, 532, 533, 534, 535 ],
+  "instrumentationFlagLines" : [ 527 ],
+  "customExceptionLines" : [ 531 ]
+} ]

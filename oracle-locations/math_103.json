@@ -1,0 +1,8 @@
+[ {
+  "className" : "org.apache.commons.math.distribution.NormalDistributionImpl",
+  "methodName" : "cumulativeProbability",
+  "lineNumber" : 108,
+  "instrumentationLines" : [ 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121 ],
+  "instrumentationFlagLines" : [ 109 ],
+  "customExceptionLines" : [ 114 ]
+} ]
