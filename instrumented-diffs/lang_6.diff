@@ -1,0 +1,27 @@
+diff --git a/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java b/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java
+index ec0b931e..a3c66d82 100644
+--- a/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java
++++ b/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java
+@@ -552,7 +552,21 @@ public class StringEscapeUtils {
+      * newline or double quote, {@code null} if null string input
+      * @since 2.4
+      */
+-    public static final String escapeCsv(String input) {
++	public static final String escapeCsv(String input) {
++		if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
++			String returnValue = null;
++			try {
++				returnValue = escapeCsv_original(input);
++			} catch (StringIndexOutOfBoundsException e) {
++				throw new RuntimeException("[Defects4J_BugReport_Violation]");
++			}
++			return returnValue;
++		} else {
++			return escapeCsv_original(input);
++		}
++	}
++
++    public static final String escapeCsv_original(String input) {
+         return ESCAPE_CSV.translate(input);
+     }
+ 
