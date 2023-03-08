@@ -666,3 +666,14 @@ Condition for a check is not known; in fact this check is wrong in the current i
 * [math_65.zip](./instrumented-archives/math_65.zip), [math_65.diff](./instrumented-diffs/math_65.diff)
 
 </details>
+
+## Additional subjects
+
+<details>
+<summary><b>Lang-6</b> (ARJA implausible, but in search space of ARJA-e)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-857
+* new tag: `D4J_Lang_6_BUGGY_VERSION_INSTRUMENTED`
+* [lang_6.zip](./instrumented-archives/lang_6.zip), [lang_6.diff](./instrumented-diffs/lang_6.diff)
+
+</details>
