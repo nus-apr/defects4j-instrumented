@@ -1,0 +1,31 @@
+diff --git a/src/java/org/apache/commons/lang/LocaleUtils.java b/src/java/org/apache/commons/lang/LocaleUtils.java
+index ceb886e8..28257b93 100644
+--- a/src/java/org/apache/commons/lang/LocaleUtils.java
++++ b/src/java/org/apache/commons/lang/LocaleUtils.java
+@@ -219,9 +219,23 @@ public class LocaleUtils {
+      * @param locale the Locale object to check if it is available
+      * @return true if the locale is a known locale
+      */
+-    public static boolean isAvailableLocale(Locale locale) {
+-        return cAvailableLocaleSet.contains(locale);
+-    }
++	public static boolean isAvailableLocale(Locale locale) { // defects4j.instrumentation
++		if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) { // defects4j.instrumentation
++			boolean returnValue; // defects4j.instrumentation
++			try { // defects4j.instrumentation
++				returnValue = isAvailableLocale_original(locale); // defects4j.instrumentation
++			} catch (NullPointerException e) { // defects4j.instrumentation
++				throw new RuntimeException("[Defects4J_BugReport_Violation]"); // defects4j.instrumentation
++			} // defects4j.instrumentation
++			return returnValue; // defects4j.instrumentation
++		} else { // defects4j.instrumentation
++			return isAvailableLocale_original(locale); // defects4j.instrumentation
++		} // defects4j.instrumentation
++	} // defects4j.instrumentation
++
++	public static boolean isAvailableLocale_original(Locale locale) { // defects4j.instrumentation
++		return cAvailableLocaleSet.contains(locale); // defects4j.instrumentation
++	} // defects4j.instrumentation
+ 
+     //-----------------------------------------------------------------------
+     /**

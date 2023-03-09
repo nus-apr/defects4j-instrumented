@@ -677,3 +677,12 @@ Condition for a check is not known; in fact this check is wrong in the current i
 * [lang_6.zip](./instrumented-archives/lang_6.zip), [lang_6.diff](./instrumented-diffs/lang_6.diff)
 
 </details>
+
+<details>
+<summary><b>Lang-57</b> (ARJA implausible, but in search space of ARJA-e)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-304
+* new tag: `D4J_Lang_57_BUGGY_VERSION_INSTRUMENTED`
+* [lang_57.zip](./instrumented-archives/lang_57.zip), [lang_57.diff](./instrumented-diffs/lang_57.diff)
+
+</details>

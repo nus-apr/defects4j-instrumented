@@ -7,21 +7,21 @@ index ec0b931e..a3c66d82 100644
       * @since 2.4
       */
 -    public static final String escapeCsv(String input) {
-+	public static final String escapeCsv(String input) {
-+		if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) {
-+			String returnValue = null;
-+			try {
-+				returnValue = escapeCsv_original(input);
-+			} catch (StringIndexOutOfBoundsException e) {
-+				throw new RuntimeException("[Defects4J_BugReport_Violation]");
-+			}
-+			return returnValue;
-+		} else {
-+			return escapeCsv_original(input);
-+		}
-+	}
++	public static final String escapeCsv(String input) { // defects4j.instrumentation
++		if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) { // defects4j.instrumentation
++			String returnValue = null; // defects4j.instrumentation
++			try { // defects4j.instrumentation
++				returnValue = escapeCsv_original(input); // defects4j.instrumentation
++			} catch (StringIndexOutOfBoundsException e) { // defects4j.instrumentation
++				throw new RuntimeException("[Defects4J_BugReport_Violation]"); // defects4j.instrumentation
++			} // defects4j.instrumentation
++			return returnValue; // defects4j.instrumentation
++		} else { // defects4j.instrumentation
++			return escapeCsv_original(input); // defects4j.instrumentation
++		} // defects4j.instrumentation
++	} // defects4j.instrumentation
 +
-+    public static final String escapeCsv_original(String input) {
++    public static final String escapeCsv_original(String input) { // defects4j.instrumentation
          return ESCAPE_CSV.translate(input);
      }
  
