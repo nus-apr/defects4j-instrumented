@@ -719,3 +719,14 @@ Condition for a check is not known; in fact this check is wrong in the current i
 
 → Bug report explains a case where the solver does not find the optimal solution. However, there are no constraints or conditions that could be checked in our general oracle beyond the concrete test case.
 </details>
+
+<details>
+<summary><b>Math-85</b> (ARJA implausible, but in search space of ARJA-e)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-280
+
+> … gives the exception below. It should return (approx) 2.0000…
+> 
+
+→ the bug report illustrates multiple examples, for which the NormalDistributionImpl.inverseCumulativeProbability(..) results in a `MathException`. However, the `MathException` is also sometimes expected, as the methods signature actually has the corresponding throw declaration. To define an oracle, we would need to know when it is expected or when it is not expected. But the report does not include this information.
+</details>
