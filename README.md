@@ -707,4 +707,15 @@ Condition for a check is not known; in fact this check is wrong in the current i
 > Methode SimplexSolver.optimeze(...) gives bad results with commons-math3-3.0
 > in a simple test problem. It works well in commons-math-2.2.
 
-→ Bug report does not mention specifics. It only compares with a previous version that also does allow the setup of a simple check based on metamorphic relations because the previous version is not available within this codebase. 
+→ Bug report does not mention specifics. It only compares with a previous version that also does allow the setup of a simple check based on metamorphic relations because the previous version is not available within this codebase.
+</details>
+
+<details>
+<summary><b>Math-82</b> (ARJA implausible, but in search space of ARJA-e)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-288
+
+> SimplexSolver didn't find the optimal solution.
+
+→ Bug report explains a case where the solver does not find the optimal solution. However, there are no constraints or conditions that could be checked in our general oracle beyond the concrete test case.
+</details>
