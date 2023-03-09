@@ -1,8 +1,0 @@
-[ {
-  "className" : "org.apache.commons.math.optimization.general.AbstractLeastSquaresOptimizer",
-  "methodName" : "getChiSquare",
-  "lineNumber" : 254,
-  "instrumentationLines" : [ 255, 256, 257, 258, 259, 260, 261, 262, 263, 264 ],
-  "instrumentationFlagLines" : [ 255 ],
-  "customExceptionLines" : [ 258 ]
-} ]

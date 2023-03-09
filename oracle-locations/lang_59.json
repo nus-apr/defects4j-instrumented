@@ -1,8 +1,0 @@
-[ {
-  "className" : "org.apache.commons.lang.text.StrBuilder",
-  "methodName" : "appendFixedWidthPadRight",
-  "lineNumber" : 878,
-  "instrumentationLines" : [ 879, 880, 881, 882, 883, 884, 885, 886, 887 ],
-  "instrumentationFlagLines" : [ 879 ],
-  "customExceptionLines" : [ 883 ]
-} ]

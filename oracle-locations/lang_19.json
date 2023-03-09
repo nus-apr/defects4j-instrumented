@@ -1,8 +1,0 @@
-[ {
-  "className" : "org.apache.commons.lang3.StringEscapeUtils",
-  "methodName" : "unescapeHtml4",
-  "lineNumber" : 467,
-  "instrumentationLines" : [ 468, 469, 470, 471, 472, 473, 474, 475, 476, 477, 478, 479, 480, 481, 482, 483, 484 ],
-  "instrumentationFlagLines" : [ 468 ],
-  "customExceptionLines" : [ 475 ]
-} ]

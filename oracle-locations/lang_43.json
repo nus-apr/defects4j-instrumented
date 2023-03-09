@@ -1,8 +1,0 @@
-[ {
-  "className" : "org.apache.commons.lang.text.ExtendedMessageFormat",
-  "methodName" : "appendQuotedString",
-  "lineNumber" : 417,
-  "instrumentationLines" : [ 419, 420, 421, 422, 423, 424, 425, 426, 427 ],
-  "instrumentationFlagLines" : [ 419 ],
-  "customExceptionLines" : [ 423 ]
-} ]

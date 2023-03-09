@@ -1,8 +1,0 @@
-[ {
-  "className" : "org.apache.commons.math.complex.Complex",
-  "methodName" : "add",
-  "lineNumber" : 150,
-  "instrumentationLines" : [ 151, 152, 153, 154, 155, 156, 157, 158, 159, 160 ],
-  "instrumentationFlagLines" : [ 151 ],
-  "customExceptionLines" : [ 155 ]
-} ]

@@ -1,8 +1,0 @@
-[ {
-  "className" : "org.apache.commons.math.analysis.solvers.BrentSolver",
-  "methodName" : "solve",
-  "lineNumber" : 98,
-  "instrumentationLines" : [ 100, 101, 102, 103, 104, 105, 106, 107, 108, 109 ],
-  "instrumentationFlagLines" : [ 100 ],
-  "customExceptionLines" : [ 104 ]
-} ]

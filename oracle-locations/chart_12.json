@@ -1,8 +1,0 @@
-[ {
-  "className" : "org.jfree.chart.plot.MultiplePiePlot",
-  "methodName" : "<init>",
-  "lineNumber" : 143,
-  "instrumentationLines" : [ 145, 146, 147, 148, 149, 150, 151, 152, 153, 154 ],
-  "instrumentationFlagLines" : [ 145 ],
-  "customExceptionLines" : [ 149 ]
-} ]

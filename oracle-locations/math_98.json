@@ -1,8 +1,0 @@
-[ {
-  "className" : "org.apache.commons.math.linear.RealMatrixImpl",
-  "methodName" : "operate",
-  "lineNumber" : 773,
-  "instrumentationLines" : [ 774, 775, 776, 777, 778, 779, 780, 781, 782 ],
-  "instrumentationFlagLines" : [ 774 ],
-  "customExceptionLines" : [ 778 ]
-} ]

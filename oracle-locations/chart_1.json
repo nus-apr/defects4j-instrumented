@@ -1,8 +1,0 @@
-[ {
-  "className" : "org.jfree.chart.renderer.category.AbstractCategoryItemRenderer",
-  "methodName" : "getLegendItems",
-  "lineNumber" : 1790,
-  "instrumentationLines" : [ 1791, 1792, 1793, 1794, 1795, 1796, 1797, 1798, 1799 ],
-  "instrumentationFlagLines" : [ 1791 ],
-  "customExceptionLines" : [ 1795 ]
-} ]

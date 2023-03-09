@@ -1,8 +1,0 @@
-[ {
-  "className" : "org.apache.commons.lang3.StringUtils",
-  "methodName" : "join",
-  "lineNumber" : 3229,
-  "instrumentationLines" : [ 3230, 3231, 3232, 3233, 3234, 3235, 3236, 3237, 3238 ],
-  "instrumentationFlagLines" : [ 3230 ],
-  "customExceptionLines" : [ 3234 ]
-} ]

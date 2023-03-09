@@ -1,8 +1,0 @@
-[ {
-  "className" : "org.apache.commons.math.util.MultidimensionalCounter",
-  "methodName" : "getCounts",
-  "lineNumber" : 216,
-  "instrumentationLines" : [ 245, 246, 247, 248, 249 ],
-  "instrumentationFlagLines" : [ 245 ],
-  "customExceptionLines" : [ 247 ]
-} ]
