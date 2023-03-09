@@ -686,3 +686,16 @@ Condition for a check is not known; in fact this check is wrong in the current i
 * [lang_57.zip](./instrumented-archives/lang_57.zip), [lang_57.diff](./instrumented-diffs/lang_57.diff)
 
 </details>
+
+
+## Additional non-supported subjects
+
+<details>
+<summary><b>Math-33</b> (ARJA implausible, but in search space of ARJA-e)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-781
+
+> Methode SimplexSolver.optimeze(...) gives bad results with commons-math3-3.0
+> in a simple test problem. It works well in commons-math-2.2.
+
+→ Bug report does not mention specifics. It only compares with a previous version that also does allow the setup of a simple check based on metamorphic relations because the previous version is not available within this codebase. 
