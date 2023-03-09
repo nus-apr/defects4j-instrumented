@@ -24,8 +24,8 @@ index ceb886e8..28257b93 100644
 +	} // defects4j.instrumentation
 +
 +	public static boolean isAvailableLocale_original(Locale locale) { // defects4j.instrumentation
-+		return cAvailableLocaleSet.contains(locale); // defects4j.instrumentation
-+	} // defects4j.instrumentation
++		return cAvailableLocaleSet.contains(locale);
++	}
  
      //-----------------------------------------------------------------------
      /**
