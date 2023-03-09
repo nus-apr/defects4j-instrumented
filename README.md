@@ -687,6 +687,15 @@ Condition for a check is not known; in fact this check is wrong in the current i
 
 </details>
 
+<details>
+<summary><b>Math-59</b> (ARJA implausible, but in search space of ARJA-e)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-482
+* new tag: `D4J_Math_59_BUGGY_VERSION_INSTRUMENTED`
+* [math_59.zip](./instrumented-archives/math_59.zip), [math_59.diff](./instrumented-diffs/math_59.diff)
+
+</details>
+
 
 ## Additional non-supported subjects
 

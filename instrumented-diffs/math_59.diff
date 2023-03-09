@@ -1,0 +1,30 @@
+diff --git a/src/main/java/org/apache/commons/math/util/FastMath.java b/src/main/java/org/apache/commons/math/util/FastMath.java
+index 8cba4d484..a2bc2d961 100644
+--- a/src/main/java/org/apache/commons/math/util/FastMath.java
++++ b/src/main/java/org/apache/commons/math/util/FastMath.java
+@@ -3478,9 +3478,22 @@ public class FastMath {
+      * @param b second value
+      * @return b if a is lesser or equal to b, a otherwise
+      */
+-    public static float max(final float a, final float b) {
+-        return (a <= b) ? b : (Float.isNaN(a + b) ? Float.NaN : b);
+-    }
++	public static float max(final float a, final float b) { // defects4j.instrumentation
++		if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) { // defects4j.instrumentation
++			float returnValue; // defects4j.instrumentation
++			returnValue = max_original(a, b); // defects4j.instrumentation
++			if (returnValue < a || returnValue < b) { // defects4j.instrumentation
++				throw new RuntimeException("[Defects4J_BugReport_Violation]"); // defects4j.instrumentation
++			} // defects4j.instrumentation
++			return returnValue; // defects4j.instrumentation
++		} else { // defects4j.instrumentation
++			return max_original(a, b); // defects4j.instrumentation
++		} // defects4j.instrumentation
++	} // defects4j.instrumentation
++
++	public static float max_original(final float a, final float b) { // defects4j.instrumentation
++		return (a <= b) ? b : (Float.isNaN(a + b) ? Float.NaN : b);
++	}
+ 
+     /** Compute the maximum of two values
+      * @param a first value
