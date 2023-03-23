@@ -362,15 +362,6 @@ Additionally, we instrumented **3** subjects, for which ARJA cannot generate any
 </details>
 
 <details>
-<summary><b>Math-81</b> (ARJA plausible but incorrect)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/MATH-308
-* new tag: `D4J_Math_81_BUGGY_VERSION_INSTRUMENTED`
-* [math_81.zip](./instrumented-archives/math_81.zip), [math_81.diff](./instrumented-diffs/math_81.diff)
-
-</details>
-
-<details>
 <summary><b>Math-95</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-227
@@ -546,6 +537,16 @@ The bug report says that the `SimplexSolver` throws an `UnboundedSolutionExcepti
 
 → only one failing test case, which is already added to the test suite in Defects4J
 
+</details>
+
+<details>
+<summary><b>Math-81</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-308
+* new tag: `D4J_Math_81_BUGGY_VERSION_INSTRUMENTED`
+* [math_81.zip](./instrumented-archives/math_81.zip), [math_81.diff](./instrumented-diffs/math_81.diff)
+
+→ only one failing test case; a similar one has already been added to the test suite in Defects4J
 </details>
 
 <details>
