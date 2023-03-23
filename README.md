@@ -290,15 +290,6 @@ Additionally, we instrumented **3** subjects, for which ARJA cannot generate any
 </details>
 
 <details>
-<summary><b>Math-50</b> (ARJA correct)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/MATH-631
-* new tag: `D4J_Math_50_BUGGY_VERSION_INSTRUMENTED`
-* [math_50.zip](./instrumented-archives/math_50.zip), [math_50.diff](./instrumented-diffs/math_50.diff)
-
-</details>
-
-<details>
 <summary><b>Math-53</b> (ARJA correct)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-618
@@ -523,6 +514,16 @@ The bug report says that the method always returns zero but does not say when it
 
 The bug report says that the `SimplexSolver` throws an `UnboundedSolutionException,` but it remains unclear when it is expected and when unexpected. So we might not be able to write a general oracle. Also the test throws a different exception: `MaxCountExceededException`. Both extend the `MathIllegalStateException`, which is expected *“if no solution fulfilling the constraints can be found in the allowed number of iterations”*.
 
+</details>
+
+<details>
+<summary><b>Math-50</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-631
+* new tag: `D4J_Math_50_BUGGY_VERSION_INSTRUMENTED`
+* [math_50.zip](./instrumented-archives/math_50.zip), [math_50.diff](./instrumented-diffs/math_50.diff)
+
+→ only one failing test case; a similar one has already been added to the test suite in Defects4J
 </details>
 
 <details>
