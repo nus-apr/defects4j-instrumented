@@ -400,15 +400,6 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 
 </details>
 
-<details>
-<summary><b>Time-15</b> (ARJA correct)</summary>
-
-* Bug Report: https://sourceforge.net/p/joda-time/bugs/147
-* new tag: `D4J_Time_15_BUGGY_VERSION_INSTRUMENTED`
-* [time_15.zip](./instrumented-archives/time_15.zip), [time_15.diff](./instrumented-diffs/time_15.diff)
-
-</details>
-
 
 ### jfreechart (3 subjects)
 
@@ -649,6 +640,16 @@ Condition for a check is not known; in fact this check is wrong in the current i
 * Bug Report: UNKNOWN
 
 </details>
+
+<details>
+<summary><b>Time-15</b> (ARJA correct)</summary>
+
+* Bug Report: https://sourceforge.net/p/joda-time/bugs/147
+
+→ only one failing test case, which is already added to the test suite in Defects4J
+
+</details>
+
 
 ## Other Supported Subjects (2)
 
