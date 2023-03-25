@@ -445,6 +445,15 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 16** subjects.
 
 <details>
+<summary><b>Lang-53</b> (ARJA implausible)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-346
+
+→ only one failing test case, which is already added to the test suite in Defects4J
+
+</details>
+
+<details>
 <summary><b>Lang-60</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-295
@@ -649,15 +658,6 @@ Condition for a check is not known; in fact this check is wrong in the current i
 * Bug Report: https://issues.apache.org/jira/browse/LANG-710
 * new tag: `D4J_Lang_19_BUGGY_VERSION_INSTRUMENTED`
 * [lang_19.zip](./instrumented-archives/lang_19.zip), [lang_19.diff](./instrumented-diffs/lang_19.diff)
-
-</details>
-
-<details>
-<summary><b>Lang-53</b> (ARJA implausible)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/LANG-346
-* new tag: `D4J_Lang_53_BUGGY_VERSION_INSTRUMENTED`
-* [lang_53.zip](./instrumented-archives/lang_53.zip), [lang_53.diff](./instrumented-diffs/lang_53.diff)
 
 </details>
 
