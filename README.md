@@ -73,7 +73,7 @@ ARJA reported that it can generate plausible patches for 59 subjects. From these
 
 For **16** subjects we were not able to write an oracle (see [below](#not-supported-arja-plausible-subjects-17)).
 
-Additionally, we instrumented **3** subjects, for which ARJA cannot generate any plausible patch (see [below](#other-supported-subjects-3)).
+Additionally, we instrumented **2** subjects, for which ARJA cannot generate any plausible patch (see [below](#other-supported-subjects-2)).
 
 
 
@@ -641,7 +641,7 @@ Condition for a check is not known; in fact this check is wrong in the current i
 
 </details>
 
-## Other Supported Subjects (3)
+## Other Supported Subjects (2)
 
 <details>
 <summary><b>Lang-19</b> (Example; ARJA implausible)</summary>
@@ -658,15 +658,6 @@ Condition for a check is not known; in fact this check is wrong in the current i
 * Bug Report: https://issues.apache.org/jira/browse/LANG-346
 * new tag: `D4J_Lang_53_BUGGY_VERSION_INSTRUMENTED`
 * [lang_53.zip](./instrumented-archives/lang_53.zip), [lang_53.diff](./instrumented-diffs/lang_53.diff)
-
-</details>
-
-<details>
-<summary><b>Math-65</b> (ARJA implausible)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/MATH-377
-* new tag: `D4J_Math_65_BUGGY_VERSION_INSTRUMENTED`
-* [math_65.zip](./instrumented-archives/math_65.zip), [math_65.diff](./instrumented-diffs/math_65.diff)
 
 </details>
 
