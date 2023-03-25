@@ -1,8 +1,8 @@
 diff --git a/src/main/java/org/apache/commons/math/distribution/NormalDistributionImpl.java b/src/main/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
-index 0e124d852..22b036f2f 100644
+index 0e124d852..31e54cac3 100644
 --- a/src/main/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
 +++ b/src/main/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
-@@ -122,6 +122,22 @@ public class NormalDistributionImpl extends AbstractContinuousDistribution
+@@ -122,6 +122,18 @@ public class NormalDistributionImpl extends AbstractContinuousDistribution
       * @throws MathException if the algorithm fails to converge
       */
      public double cumulativeProbability(double x) throws MathException {
@@ -10,11 +10,7 @@ index 0e124d852..22b036f2f 100644
 +            try { // defects4j.instrumentation
 +                return cumulativeProbability_original(x); // defects4j.instrumentation
 +            } catch (org.apache.commons.math.ConvergenceException e) { // defects4j.instrumentation
-+                if (x < (mean - 20 * standardDeviation) || x > (mean + 20 * standardDeviation)) { // defects4j.instrumentation
-+                    throw new RuntimeException("[Defects4J_BugReport_Violation]"); // defects4j.instrumentation
-+                } else { // defects4j.instrumentation
-+                    throw e; // defects4j.instrumentation
-+                } // defects4j.instrumentation
++                throw new RuntimeException("[Defects4J_BugReport_Violation]"); // defects4j.instrumentation
 +            } // defects4j.instrumentation
 +        } else { // defects4j.instrumentation
 +            return cumulativeProbability_original(x); // defects4j.instrumentation
