@@ -197,15 +197,6 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 </details>
 
 <details>
-<summary><b>Lang-59</b> (ARJA plausible but incorrect)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/LANG-299
-* new tag: `D4J_Lang_59_BUGGY_VERSION_INSTRUMENTED`
-* [lang_59.zip](./instrumented-archives/lang_59.zip), [lang_59.diff](./instrumented-diffs/lang_59.diff)
-
-</details>
-
-<details>
 <summary><b>Lang-61</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-294
@@ -434,6 +425,17 @@ The following list includes subjects, for which the bug report does not contain 
 → only one failing test case, which is already added to the test suite in Defects4J
 
 </details>
+
+<details>
+<summary><b>Lang-59</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-299
+
+→ no easy assertion can be written to not cause false positives. In particular, if `size + width` overflows,
+  an `ArrayIndexOutOfBoundsException` will be thrown.
+
+</details>
+
 
 <details>
 <summary><b>Lang-60</b> (ARJA plausible but incorrect)</summary>
