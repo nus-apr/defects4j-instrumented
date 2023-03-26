@@ -335,15 +335,6 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 </details>
 
 <details>
-<summary><b>Math-98</b> (ARJA correct)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/MATH-209
-* new tag: `D4J_Math_98_BUGGY_VERSION_INSTRUMENTED`
-* [math_98.zip](./instrumented-archives/math_98.zip), [math_98.diff](./instrumented-diffs/math_98.diff)
-
-</details>
-
-<details>
 <summary><b>Math-103</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-167
@@ -598,6 +589,15 @@ The provided test case throws an `ConvergenceException`, which is generally not 
 > 
 
 Condition for a check is not known; in fact this check is wrong in the current implementation and needs repair.
+
+</details>
+
+<details>
+<summary><b>Math-98</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-209
+
+Not enough information is provided to write an assertion without causing false positives.
 
 </details>
 
