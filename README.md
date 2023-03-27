@@ -143,15 +143,6 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 </details>
 
 <details>
-<summary><b>Lang-43</b> (ARJA correct)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/LANG-477
-* new tag: `D4J_Lang_43_BUGGY_VERSION_INSTRUMENTED`
-* [lang_43.zip](./instrumented-archives/lang_43.zip), [lang_43.diff](./instrumented-diffs/lang_43.diff)
-
-</details>
-
-<details>
 <summary><b>Lang-45</b> (ARJA correct)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-419
@@ -389,6 +380,15 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 ## Not Supported ARJA Plausible Subjects (16)
 
 The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 16** subjects.
+
+<details>
+<summary><b>Lang-43</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-477
+
+Cannot write an assertion without a test prefix.
+
+</details>
 
 <details>
 <summary><b>Lang-50</b> (ARJA plausible but incorrect)</summary>
