@@ -238,7 +238,7 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 <details>
 <summary><b>Math-39</b> (ARJA correct)</summary>
 
-* Bug Report: https://issues.apache.org/jira/browse/MATH-227
+* Bug Report: https://issues.apache.org/jira/browse/MATH-727
 * new tag: `D4J_Math_39_BUGGY_VERSION_INSTRUMENTED`
 * [math_39.zip](./instrumented-archives/math_39.zip), [math_39.diff](./instrumented-diffs/math_39.diff)
 
