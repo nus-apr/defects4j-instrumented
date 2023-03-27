@@ -254,15 +254,6 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 </details>
 
 <details>
-<summary><b>Math-31</b> (ARJA plausible but incorrect)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/MATH-718
-* new tag: `D4J_Math_31_BUGGY_VERSION_INSTRUMENTED`
-* [math_31.zip](./instrumented-archives/math_31.zip), [math_31.diff](./instrumented-diffs/math_31.diff)
-
-</details>
-
-<details>
 <summary><b>Math-39</b> (ARJA correct)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-227
@@ -470,6 +461,15 @@ The bug report says that the method always returns zero but does not say when it
 > SimplexSolver throws UnboundedSolutionException when trying to solve minimization linear programming problem. The number of exception thrown depends on the number of variables.
 
 The bug report says that the `SimplexSolver` throws an `UnboundedSolutionException,` but it remains unclear when it is expected and when unexpected. So we might not be able to write a general oracle. Also the test throws a different exception: `MaxCountExceededException`. Both extend the `MathIllegalStateException`, which is expected *“if no solution fulfilling the constraints can be found in the allowed number of iterations”*.
+
+</details>
+
+<details>
+<summary><b>Math-31</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-718
+
+→ Not enough information for an assertion.
 
 </details>
 
