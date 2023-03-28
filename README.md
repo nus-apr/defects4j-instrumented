@@ -290,15 +290,6 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 </details>
 
 <details>
-<summary><b>Math-74</b> (ARJA plausible but incorrect)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/MATH-338
-* new tag: `D4J_Math_74_BUGGY_VERSION_INSTRUMENTED`
-* [math_74.zip](./instrumented-archives/math_74.zip), [math_74.diff](./instrumented-diffs/math_74.diff)
-
-</details>
-
-<details>
 <summary><b>Math-95</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-227
@@ -519,6 +510,15 @@ The bug report says that the `SimplexSolver` throws an `UnboundedSolutionExcepti
 * Bug Report: https://issues.apache.org/jira/browse/MATH-343
 
 → The bug report does not provide enough information for a assertion **that is consistent with the developer patch**.
+
+</details>
+
+<details>
+<summary><b>Math-74</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-338
+
+→ The bug report does not provide enough information for an assertion **that is consistent with the developer patch**.
 
 </details>
 
