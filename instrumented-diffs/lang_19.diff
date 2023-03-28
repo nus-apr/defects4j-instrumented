@@ -1,23 +1,29 @@
 diff --git a/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java b/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java
-index d84aae58..f12a09e7 100644
+index d84aae58..7d1e5b3c 100644
 --- a/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java
 +++ b/src/main/java/org/apache/commons/lang3/StringEscapeUtils.java
-@@ -465,6 +465,18 @@ public class StringEscapeUtils {
+@@ -465,7 +465,23 @@ public class StringEscapeUtils {
       * @since 3.0
       */
      public static final String unescapeHtml4(String input) {
+-        return UNESCAPE_HTML4.translate(input);
 +        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) { // defects4j.instrumentation
 +            try { // defects4j.instrumentation
-+                return unescapeHtml4_orig(input); // defects4j.instrumentation
++                // Original Code START // defects4j.instrumentation
++                return UNESCAPE_HTML4.translate(input); // defects4j.instrumentation
++                // Original Code END // defects4j.instrumentation
 +            } catch (StringIndexOutOfBoundsException e) { // defects4j.instrumentation
-+                throw new RuntimeException("[Defects4J_BugReport_Violation]"); // defects4j.instrumentation
++                if (input.contains("&")) { // defects4j.instrumentation
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]"); // defects4j.instrumentation
++                } else { // defects4j.instrumentation
++                    throw e; // defects4j.instrumentation
++                } // defects4j.instrumentation
 +            } // defects4j.instrumentation
 +        } else { // defects4j.instrumentation
-+            return unescapeHtml4_orig(input); // defects4j.instrumentation
++            // Original Code START // defects4j.instrumentation
++            return UNESCAPE_HTML4.translate(input); // defects4j.instrumentation
++            // Original Code END // defects4j.instrumentation
 +        } // defects4j.instrumentation
-+    } // defects4j.instrumentation
-+
-+    public static final String unescapeHtml4_orig(String input) { // defects4j.instrumentation
-         return UNESCAPE_HTML4.translate(input);
      }
- 
+
+     /**
