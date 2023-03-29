@@ -196,15 +196,6 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 
 </details>
 
-<details>
-<summary><b>Lang-63</b> (ARJA plausible but incorrect)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/LANG-281
-* new tag: `D4J_Lang_63_BUGGY_VERSION_INSTRUMENTED`
-* [lang_63.zip](./instrumented-archives/lang_63.zip), [lang_63.diff](./instrumented-diffs/lang_63.diff)
-
-</details>
-
 
 ### commons-math (20 subjects)
 
@@ -419,6 +410,15 @@ Cannot write an assertion without writing a test prefix.
 > 
 
 → unclear how to formulate an assertion because the reporter just reports that some code needs change without any problem description
+
+</details>
+
+<details>
+<summary><b>Lang-63</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-281
+
+→ only one failing test case, which is already added to the test suite in Defects4J
 
 </details>
 
