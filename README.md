@@ -170,6 +170,15 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 </details>
 
 <details>
+<summary><b>Lang-50</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/LANG-368
+* new tag: `D4J_Lang_50_BUGGY_VERSION_INSTRUMENTED`
+* [lang_50.zip](./instrumented-archives/lang_50.zip), [lang_50.diff](./instrumented-diffs/lang_50.diff)
+
+</details>
+
+<details>
 <summary><b>Lang-51</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/LANG-365
@@ -381,15 +390,6 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 ## Not Supported ARJA Plausible Subjects (16)
 
 The following list includes subjects, for which the bug report does not contain sufficient information to formulate a meaningful assertion. **Total count: 16** subjects.
-
-<details>
-<summary><b>Lang-50</b> (ARJA plausible but incorrect)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/LANG-368
-
-Cannot write an assertion without writing a test prefix.
-
-</details>
 
 <details>
 <summary><b>Lang-53</b> (ARJA implausible)</summary>
