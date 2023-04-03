@@ -1,14 +1,22 @@
 diff --git a/src/main/java/org/apache/commons/lang3/math/NumberUtils.java b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
-index d49da7f4..cb700815 100644
+index d49da7f4..6fce831f 100644
 --- a/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
 +++ b/src/main/java/org/apache/commons/lang3/math/NumberUtils.java
-@@ -443,6 +443,16 @@ public class NumberUtils {
+@@ -443,6 +443,24 @@ public class NumberUtils {
       * @throws NumberFormatException if the value cannot be converted
       */
      public static Number createNumber(String str) throws NumberFormatException {
 +        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled")) // defects4j.instrumentation
 +                && (str != null) && str.startsWith("--")) { // defects4j.instrumentation
-+            createNumber_orig(str); // NumberFormatException should be thrown // defects4j.instrumentation
++            try {
++                createNumber_orig(str); // NumberFormatException should be thrown // defects4j.instrumentation
++            } catch (Throwable t) {
++                if (t instanceof NumberFormatException) {
++                    throw (NumberFormatException) t;
++                } else {
++                    throw new RuntimeException("[Defects4J_BugReport_Violation]"); // defects4j.instrumentation
++                }
++            }
 +            throw new RuntimeException("[Defects4J_BugReport_Violation]"); // defects4j.instrumentation
 +        } else { // defects4j.instrumentation
 +            return createNumber_orig(str); // defects4j.instrumentation
