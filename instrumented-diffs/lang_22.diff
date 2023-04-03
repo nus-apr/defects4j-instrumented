@@ -1,5 +1,5 @@
 diff --git a/src/main/java/org/apache/commons/lang3/math/Fraction.java b/src/main/java/org/apache/commons/lang3/math/Fraction.java
-index b36a156a..857a4c79 100644
+index b36a156a..a8bccfa2 100644
 --- a/src/main/java/org/apache/commons/lang3/math/Fraction.java
 +++ b/src/main/java/org/apache/commons/lang3/math/Fraction.java
 @@ -579,6 +579,19 @@ public final class Fraction extends Number implements Comparable<Fraction> {
@@ -9,7 +9,7 @@ index b36a156a..857a4c79 100644
 +        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) { // defects4j.instrumentation
 +            int returnValue; // defects4j.instrumentation
 +            returnValue = greatestCommonDivisor_original(u, v); // defects4j.instrumentation
-+            if ((u == Integer.MIN_VALUE) && v > 0 && ((v & (v - 1)) == 0) && returnValue != v) { // defects4j.instrumentation
++            if (u == Integer.MIN_VALUE && v == 2 && returnValue != 2) { // defects4j.instrumentation
 +                throw new RuntimeException("[Defects4J_BugReport_Violation]"); // defects4j.instrumentation
 +            } // defects4j.instrumentation
 +            return returnValue; // defects4j.instrumentation
