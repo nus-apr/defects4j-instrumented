@@ -1,0 +1,24 @@
+diff --git a/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java b/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
+index 30ebfff21..37bca9119 100644
+--- a/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
++++ b/src/main/java/org/apache/commons/math/optimization/general/AbstractLeastSquaresOptimizer.java
+@@ -252,6 +252,19 @@ public abstract class AbstractLeastSquaresOptimizer implements DifferentiableMul
+      * @return chi-square value
+      */
+     public double getChiSquare() {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) { // defects4j.instrumentation
++            double returnValue = getChiSquare_original(); // defects4j.instrumentation
++            if (getRMS() != Math.sqrt(returnValue / rows)) { // defects4j.instrumentation
++                throw new RuntimeException("[Defects4J_BugReport_Violation]"); // defects4j.instrumentation
++            } else { // defects4j.instrumentation
++                return returnValue; // defects4j.instrumentation
++            } // defects4j.instrumentation
++        } else { // defects4j.instrumentation
++            return getChiSquare_original(); // defects4j.instrumentation
++        } // defects4j.instrumentation
++    } // defects4j.instrumentation
++
++    public double getChiSquare_original() { // defects4j.instrumentation
+         double chiSquare = 0;
+         for (int i = 0; i < rows; ++i) {
+             final double residual = residuals[i];
