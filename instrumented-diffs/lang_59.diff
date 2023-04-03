@@ -1,0 +1,23 @@
+diff --git a/src/java/org/apache/commons/lang/text/StrBuilder.java b/src/java/org/apache/commons/lang/text/StrBuilder.java
+index 886d424e..f4643cc5 100644
+--- a/src/java/org/apache/commons/lang/text/StrBuilder.java
++++ b/src/java/org/apache/commons/lang/text/StrBuilder.java
+@@ -876,6 +876,18 @@ public class StrBuilder implements Cloneable {
+      * @return this, to enable chaining
+      */
+     public StrBuilder appendFixedWidthPadRight(Object obj, int width, char padChar) {
++        if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) { // defects4j.instrumentation
++            try { // defects4j.instrumentation
++                return appendFixedWidthPadRight_original(obj, width, padChar); // defects4j.instrumentation
++            } catch (ArrayIndexOutOfBoundsException e) { // defects4j.instrumentation
++                throw new RuntimeException("[Defects4J_BugReport_Violation]"); // defects4j.instrumentation
++            } // defects4j.instrumentation
++        } else { // defects4j.instrumentation
++            return appendFixedWidthPadRight_original(obj, width, padChar); // defects4j.instrumentation
++        } // defects4j.instrumentation
++    } // defects4j.instrumentation
++
++    public StrBuilder appendFixedWidthPadRight_original(Object obj, int width, char padChar) { // defects4j.instrumentation
+         if (width > 0) {
+             ensureCapacity(size + width);
+             String str = (obj == null ? getNullText() : obj.toString());
