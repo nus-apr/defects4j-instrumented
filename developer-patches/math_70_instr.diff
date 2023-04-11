@@ -1,0 +1,13 @@
+diff --git a/src/main/java/org/apache/commons/math/analysis/solvers/BisectionSolver.java b/src/main/java/org/apache/commons/math/analysis/solvers/BisectionSolver.java
+index 24d163a8..7a9f290b 100644
+--- a/src/main/java/org/apache/commons/math/analysis/solvers/BisectionSolver.java
++++ b/src/main/java/org/apache/commons/math/analysis/solvers/BisectionSolver.java
+@@ -82,7 +82,7 @@ public class BisectionSolver extends UnivariateRealSolverImpl {
+ 
+     public double solve_orig(final UnivariateRealFunction f, double min, double max, double initial) // defects4j.instrumentation
+         throws MaxIterationsExceededException, FunctionEvaluationException { // defects4j.instrumentation
+-        return solve(min, max);
++        return solve(f, min, max);
+     }
+ 
+     /** {@inheritDoc} */

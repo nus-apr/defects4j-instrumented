@@ -1,0 +1,30 @@
+diff --git a/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java b/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+index bdca22fc..d49638bf 100644
+--- a/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
++++ b/src/main/java/org/apache/commons/math/ode/nonstiff/EmbeddedRungeKuttaIntegrator.java
+@@ -242,10 +242,11 @@ public abstract class EmbeddedRungeKuttaIntegrator
+         }
+ 
+         if (firstTime) {
+-          final double[] scale;
++          final double[] scale = new double[y0.length];
+           if (vecAbsoluteTolerance == null) {
+-              scale = new double[y0.length];
+-              java.util.Arrays.fill(scale, scalAbsoluteTolerance);
++              for (int i = 0; i < scale.length; ++i) {
++                scale[i] = scalAbsoluteTolerance + scalRelativeTolerance * Math.abs(y[i]);
++              }
+ 
+               if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) { // defects4j.instrumentation
+                   for (int i=0; i<scale.length; i++) { // defects4j.instrumentation
+@@ -256,7 +257,9 @@ public abstract class EmbeddedRungeKuttaIntegrator
+                   } // defects4j.instrumentation
+               } // defects4j.instrumentation
+             } else {
+-              scale = vecAbsoluteTolerance;
++              for (int i = 0; i < scale.length; ++i) {
++                scale[i] = vecAbsoluteTolerance[i] + vecRelativeTolerance[i] * Math.abs(y[i]);
++              }
+ 
+               if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) { // defects4j.instrumentation
+                   for (int i=0; i<scale.length; i++) { // defects4j.instrumentation

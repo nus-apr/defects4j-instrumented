@@ -1,0 +1,18 @@
+diff --git a/src/java/org/apache/commons/math/distribution/FDistributionImpl.java b/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+index 7e46d011..ff85816f 100644
+--- a/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
++++ b/src/java/org/apache/commons/math/distribution/FDistributionImpl.java
+@@ -155,10 +155,12 @@ public class FDistributionImpl
+     } // defects4j.instrumentation
+ 
+     protected double getInitialDomain_original(double p) { // defects4j.instrumentation
+-        double ret;
++        double ret = 1.0;
+         double d = getDenominatorDegreesOfFreedom();
++        if (d > 2.0) {
+             // use mean
+             ret = d / (d - 2.0);
++        }
+         return ret;
+     }
+     

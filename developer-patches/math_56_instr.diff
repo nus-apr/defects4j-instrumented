@@ -1,0 +1,19 @@
+diff --git a/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java b/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
+index fd73ad71..ac32b777 100644
+--- a/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
++++ b/src/main/java/org/apache/commons/math/util/MultidimensionalCounter.java
+@@ -239,13 +239,7 @@ public class MultidimensionalCounter implements Iterable<Integer> {
+             correctLastIndex = index - count; // defects4j.instrumentation
+         } // defects4j.instrumentation
+ 
+-        int idx = 1;
+-        while (count < index) {
+-            count += idx;
+-            ++idx;
+-        }
+-        --idx;
+-        indices[last] = idx;
++        indices[last] = index - count;
+ 
+         if (Boolean.parseBoolean(System.getProperty("defects4j.instrumentation.enabled"))) { // defects4j.instrumentation
+             if (indices[last] != correctLastIndex) { // defects4j.instrumentation

@@ -1,0 +1,23 @@
+diff --git a/src/java/org/apache/commons/math/distribution/NormalDistributionImpl.java b/src/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
+index 28d87dfd..d9697e76 100644
+--- a/src/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
++++ b/src/java/org/apache/commons/math/distribution/NormalDistributionImpl.java
+@@ -118,8 +118,18 @@ public class NormalDistributionImpl extends AbstractContinuousDistribution
+     } // defects4j.instrumentation
+ 
+     public double cumulativeProbability_original(double x) throws MathException { // defects4j.instrumentation
++        try {
+             return 0.5 * (1.0 + Erf.erf((x - mean) /
+                     (standardDeviation * Math.sqrt(2.0))));
++        } catch (MaxIterationsExceededException ex) {
++            if (x < (mean - 20 * standardDeviation)) { // JDK 1.5 blows at 38
++                return 0.0d;
++            } else if (x > (mean + 20 * standardDeviation)) {
++                return 1.0d;
++            } else {
++                throw ex;
++            }
++        }
+     }
+     
+     /**
