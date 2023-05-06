@@ -732,3 +732,6 @@ Condition for a check is not known; in fact this check is wrong in the current i
 → the bug report illustrates multiple examples, for which the NormalDistributionImpl.inverseCumulativeProbability(..) results in a `MathException`. However, the `MathException` is also sometimes expected, as the methods signature actually has the corresponding throw declaration. To define an oracle, we would need to know when it is expected or when it is not expected. But the report does not include this information.
 </details>
 
+# Refactor Diffs
+
+To allow Defects4j to work with Java 1.5+, we have refactored a few subjects, basically to replace the `Enum` identifiers with some non-keyword. The EvoRepair experiments were performed on the refactored subjects; so was every other tool that is compared with EvoRepair.
