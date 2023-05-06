@@ -71,13 +71,13 @@ ARJA reported that it can generate plausible patches for 59 subjects. From these
 * 29 subjects are covered by ARJA with plausible but incorrect patches, and
 * 14 subjects are covered by ARJA with correct patches.
 
-For **16** subjects we were not able to write an oracle (see [below](#not-supported-arja-plausible-subjects-17)).
+For **20** subjects we were not able to write an oracle (see [below](#not-supported-arja-plausible-subjects-17)).
 
 Additionally, we instrumented **2** subjects, for which ARJA cannot generate any plausible patch (see [below](#other-supported-subjects-2)).
 
 
 
-### commons-lang (16 subjects)
+### commons-lang (15 subjects)
 
 <details>
 <summary><b>Lang-7</b> (ARJA plausible but incorrect)</summary>
@@ -215,7 +215,7 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 </details>
 
 
-### commons-math (20 subjects)
+### commons-math (18 subjects)
 
 <details>
 <summary><b>Math-2</b> (ARJA plausible but incorrect)</summary>
@@ -272,6 +272,14 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 </details>
 
 <details>
+<summary><b>Math-50</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-631
+* new tag: `D4J_Math_50_BUGGY_VERSION_INSTRUMENTED`
+* [math_50.zip](./instrumented-archives/math_50.zip), [math_50.diff](./instrumented-diffs/math_50.diff)
+</details>
+
+<details>
 <summary><b>Math-53</b> (ARJA correct)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-618
@@ -317,6 +325,25 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 </details>
 
 <details>
+<summary><b>Math-73</b> (ARJA correct)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-343
+* new tag: `D4J_Math_70_BUGGY_VERSION_INSTRUMENTED`
+* [math_73.diff](./instrumented-diffs/math_73.diff)
+
+</details>
+
+
+<details>
+<summary><b>Math-74</b> (ARJA plausible but incorrect)</summary>
+
+* Bug Report: https://issues.apache.org/jira/browse/MATH-338
+* new tag: `D4J_Math_70_BUGGY_VERSION_INSTRUMENTED`
+* [math_74.diff](./instrumented-diffs/math_74.diff)
+
+</details>
+
+<details>
 <summary><b>Math-81</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-308
@@ -336,6 +363,14 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 </details>
 
 <details>
+<summary><b>Math-98</b> (ARJA correct)</summary>
+
+* new tag: `D4J_Math_95_BUGGY_VERSION_INSTRUMENTED`
+* Bug Report: https://issues.apache.org/jira/browse/MATH-209
+* [math_95.zip](./instrumented-archives/math_95.zip), [math_95.diff](./instrumented-diffs/math_95.diff)
+</details>
+
+<details>
 <summary><b>Math-103</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-167
@@ -345,7 +380,7 @@ Additionally, we instrumented **2** subjects, for which ARJA cannot generate any
 </details>
 
 
-### joda-time (4 subjects)
+### joda-time (3 subjects)
 
 <details>
 <summary><b>Time-4</b> (ARJA plausible but incorrect)</summary>
@@ -482,16 +517,6 @@ The bug report says that the `SimplexSolver` throws an `UnboundedSolutionExcepti
 </details>
 
 <details>
-<summary><b>Math-50</b> (ARJA correct)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/MATH-631
-* new tag: `D4J_Math_50_BUGGY_VERSION_INSTRUMENTED`
-* [math_50.zip](./instrumented-archives/math_50.zip), [math_50.diff](./instrumented-diffs/math_50.diff)
-
-→ only one failing test case; a similar one has already been added to the test suite in Defects4J
-</details>
-
-<details>
 <summary><b>Math-68</b> (ARJA plausible but incorrect)</summary>
 
 * Bug Report: https://issues.apache.org/jira/browse/MATH-362
@@ -511,23 +536,6 @@ The bug report says that the `SimplexSolver` throws an `UnboundedSolutionExcepti
 
 </details>
 
-<details>
-<summary><b>Math-73</b> (ARJA correct)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/MATH-343
-
-→ The bug report does not provide enough information for a assertion **that is consistent with the developer patch**.
-
-</details>
-
-<details>
-<summary><b>Math-74</b> (ARJA plausible but incorrect)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/MATH-338
-
-→ The bug report does not provide enough information for an assertion **that is consistent with the developer patch**.
-
-</details>
 
 <details>
 <summary><b>Math-80</b> (ARJA plausible but incorrect)</summary>
@@ -586,15 +594,6 @@ The provided test case throws an `ConvergenceException`, which is generally not 
 > 
 
 Condition for a check is not known; in fact this check is wrong in the current implementation and needs repair.
-
-</details>
-
-<details>
-<summary><b>Math-98</b> (ARJA correct)</summary>
-
-* Bug Report: https://issues.apache.org/jira/browse/MATH-209
-
-Not enough information is provided to write an assertion without causing false positives.
 
 </details>
 
